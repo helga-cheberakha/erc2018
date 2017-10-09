@@ -1,0 +1,5 @@
+# Schema for the configuration files of the News+ Lite theme.
+
+erc2018.settings:
+  type: theme_settings
+  label: 'ERC 2018 settings'

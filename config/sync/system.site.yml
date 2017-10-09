@@ -1,0 +1,14 @@
+uuid: 72ac42f3-71a0-4d72-8657-0f170a5489c3
+name: 'ERC 2018'
+mail: helga.cheberakha@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: AyT9s8OUcclfALRE_imByOMgtZ19eOlqdF6zI3p7yqo

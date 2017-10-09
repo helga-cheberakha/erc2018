@@ -1,0 +1,22 @@
+uuid: 1f094ae8-eb0e-419f-aa8a-7a2e09b4a6f4
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - erc2018
+_core:
+  default_config_hash: IhYZr8or9vZ7jwn_comdhI_9zHgO7-MMg2ZnOa6NDr4
+id: erc2018_search
+theme: erc2018
+region: pre_header_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

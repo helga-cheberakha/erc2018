@@ -1,0 +1,22 @@
+uuid: 51f551d9-8946-4faa-a7b1-222bfe5d8009
+langcode: en
+status: true
+dependencies:
+  theme:
+    - erc2018
+_core:
+  default_config_hash: 1-32LVe_oJO6PtARCoc6n2kOiVoL4Qw2x2JzmdC7RRE
+id: erc2018_local_tasks
+theme: erc2018
+region: content
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

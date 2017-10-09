@@ -1,0 +1,22 @@
+uuid: 1561b645-1f9b-423d-a906-50b1fea43323
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - erc2018
+_core:
+  default_config_hash: BVecvhKQplth2YHOQHYmNLiRkhujORAlZBHQR9h7CBo
+id: erc2018_powered
+theme: erc2018
+region: pre_header_first
+weight: -10
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

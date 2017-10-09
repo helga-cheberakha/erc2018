@@ -1,0 +1,22 @@
+uuid: 76372e0d-9653-4eb7-90e8-992c303dbddb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - erc2018
+_core:
+  default_config_hash: K7HwVCVGXHzrqMDn4A_TwqhlrDTAy5Wyonr4scnFp1o
+id: erc2018_content
+theme: erc2018
+region: content
+weight: 1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

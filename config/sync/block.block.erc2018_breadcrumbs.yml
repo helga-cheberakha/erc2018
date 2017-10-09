@@ -1,0 +1,22 @@
+uuid: 5b0b34bb-204d-4f79-8c8f-2a6f85589d49
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - erc2018
+_core:
+  default_config_hash: IaRdSseBCA3i48FC6NeCKCU3UTSJin11pmtykJIC63c
+id: erc2018_breadcrumbs
+theme: erc2018
+region: pre_header_first
+weight: -100
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 8ed7b47b-df8a-4452-b360-acea5031b19f
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - erc2018
+_core:
+  default_config_hash: 2V6tmyadDOEYUvWWZqDg9llzLU4ITnkd1YHk6lObq-w
+id: erc2018_help
+theme: erc2018
+region: highlighted
+weight: -30
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

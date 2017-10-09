@@ -1,0 +1,20 @@
+uuid: 96a62cc8-5aed-471c-963f-3b5898e940cb
+langcode: en
+status: false
+dependencies:
+  theme:
+    - erc2018
+_core:
+  default_config_hash: ELZbYFBnMNi5Y02EtX44XyHemJ452Gfy1Tv9SBARxJE
+id: erc2018_page_title
+theme: erc2018
+region: pre_header_first
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

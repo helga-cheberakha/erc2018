@@ -1,0 +1,22 @@
+uuid: dbb88b80-e6bd-4802-b855-b12e60a8d377
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - erc2018
+_core:
+  default_config_hash: QadN6Nct-rwbtF9haekgQ_GEd6OZJQzAdDWKhqRMnUU
+id: erc2018_messages
+theme: erc2018
+region: highlighted
+weight: -50
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

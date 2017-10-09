@@ -1,0 +1,20 @@
+uuid: 1a3a0997-b2bc-44b9-a015-94f4561e409b
+langcode: en
+status: true
+dependencies:
+  theme:
+    - erc2018
+_core:
+  default_config_hash: h213FUOJyn9MSKeJsVC55gdGQMCMp5u2dPalckqsN8U
+id: erc2018_local_actions
+theme: erc2018
+region: pre_header_first
+weight: 20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }
