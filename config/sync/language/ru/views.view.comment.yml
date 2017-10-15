@@ -1,0 +1,19 @@
+display:
+  default:
+    display_options:
+      fields:
+        subject:
+          label: Тема
+      filters:
+        subject:
+          expose:
+            label: Тема
+  page_unapproved:
+    display_options:
+      filters:
+        subject:
+          expose:
+            label: Тема
+      fields:
+        subject:
+          label: Тема

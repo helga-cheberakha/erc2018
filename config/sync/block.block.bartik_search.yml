@@ -1,5 +1,5 @@
 uuid: c3ecd13c-8cc5-4070-82bc-f046fe49f47e
-langcode: en
+langcode: uk
 status: true
 dependencies:
   module:
@@ -16,7 +16,7 @@ provider: null
 plugin: search_form_block
 settings:
   id: search_form_block
-  label: Search
+  label: Пошук
   provider: search
   label_display: visible
 visibility: {  }

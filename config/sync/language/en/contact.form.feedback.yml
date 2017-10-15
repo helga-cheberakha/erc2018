@@ -1,0 +1,5 @@
+label: 'Contact us'
+message: 'Your message has been sent.'
+third_party_settings:
+  contact_storage:
+    submit_text: 'Send message'

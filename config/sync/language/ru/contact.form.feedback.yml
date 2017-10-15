@@ -1,0 +1,5 @@
+third_party_settings:
+  contact_storage:
+    submit_text: Отправить
+label: 'Свяжитесь с нами'
+message: 'Ваше сообщение было отправлено.'

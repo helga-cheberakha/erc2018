@@ -1,0 +1,22 @@
+uuid: 331f268e-706b-4798-b43b-3221d9172a1a
+langcode: uk
+status: true
+dependencies:
+  config:
+    - block_content.type.gmap_block
+    - field.storage.block_content.body
+  module:
+    - text
+id: block_content.gmap_block.body
+field_name: body
+entity_type: block_content
+bundle: gmap_block
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

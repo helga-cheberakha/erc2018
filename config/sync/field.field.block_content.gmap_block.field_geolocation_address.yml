@@ -1,0 +1,21 @@
+uuid: 28d6965c-0ec2-4868-8c7d-039a61002899
+langcode: uk
+status: true
+dependencies:
+  config:
+    - block_content.type.gmap_block
+    - field.storage.block_content.field_geolocation_address
+  module:
+    - geolocation
+id: block_content.gmap_block.field_geolocation_address
+field_name: field_geolocation_address
+entity_type: block_content
+bundle: gmap_block
+label: 'Geolocation address'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation

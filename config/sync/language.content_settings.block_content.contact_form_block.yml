@@ -1,0 +1,16 @@
+uuid: 6f81f74d-d8c3-4367-81b9-eec83768ce8a
+langcode: uk
+status: true
+dependencies:
+  config:
+    - block_content.type.contact_form_block
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.contact_form_block
+target_entity_type_id: block_content
+target_bundle: contact_form_block
+default_langcode: site_default
+language_alterable: true

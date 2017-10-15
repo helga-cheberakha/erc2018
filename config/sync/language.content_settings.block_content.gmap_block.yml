@@ -1,0 +1,16 @@
+uuid: c9b2821d-007a-43ae-9e29-bfb5874300f4
+langcode: uk
+status: true
+dependencies:
+  config:
+    - block_content.type.gmap_block
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.gmap_block
+target_entity_type_id: block_content
+target_bundle: gmap_block
+default_langcode: site_default
+language_alterable: true

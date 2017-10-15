@@ -1,5 +1,5 @@
 uuid: 00e85661-eaf2-4db8-a9fe-fd685dc1ed65
-langcode: en
+langcode: uk
 status: true
 dependencies:
   config:
@@ -13,7 +13,7 @@ bundle: page
 label: 'Promoted to front page'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: 0

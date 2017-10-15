@@ -1,0 +1,19 @@
+uuid: ea47dd90-7877-4bd6-834a-975568e1ec59
+langcode: uk
+status: true
+dependencies:
+  module:
+    - block_content
+    - geolocation
+id: block_content.field_geolocation_address
+field_name: field_geolocation_address
+entity_type: block_content
+type: geolocation
+settings: {  }
+module: geolocation
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

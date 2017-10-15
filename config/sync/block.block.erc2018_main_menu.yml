@@ -12,8 +12,8 @@ _core:
   default_config_hash: MPiuo3bt6jul4mf2flhMIp-t98II7kjLt2VJJHYE1LI
 id: erc2018_main_menu
 theme: erc2018
-region: pre_header_first
-weight: 10
+region: navigation
+weight: -4
 provider: null
 plugin: 'system_menu_block:main'
 settings:

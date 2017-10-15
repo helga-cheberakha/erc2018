@@ -11,7 +11,7 @@ _core:
 id: erc2018_messages
 theme: erc2018
 region: highlighted
-weight: -50
+weight: -5
 provider: null
 plugin: system_messages_block
 settings:

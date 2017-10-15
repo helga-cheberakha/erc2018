@@ -1,0 +1,8 @@
+uuid: 33780743-b691-4083-b3a7-d103fb035418
+langcode: uk
+status: true
+dependencies: {  }
+id: gmap_block
+label: 'Gmap block'
+revision: 0
+description: ''

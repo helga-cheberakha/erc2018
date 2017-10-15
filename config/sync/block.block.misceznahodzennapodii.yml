@@ -1,0 +1,25 @@
+uuid: eb7c7d90-df6d-4bd7-a3fa-6d77ad2e29c6
+langcode: uk
+status: true
+dependencies:
+  content:
+    - 'block_content:gmap_block:96279873-5dcd-4697-88a0-471e7f7f73f4'
+  module:
+    - block_content
+  theme:
+    - erc2018
+id: misceznahodzennapodii
+theme: erc2018
+region: sidebar_second
+weight: -3
+provider: null
+plugin: 'block_content:96279873-5dcd-4697-88a0-471e7f7f73f4'
+settings:
+  id: 'block_content:96279873-5dcd-4697-88a0-471e7f7f73f4'
+  label: 'Місцезнаходження події'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
