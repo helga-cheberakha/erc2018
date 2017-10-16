@@ -1,0 +1,20 @@
+uuid: 4db5761c-9424-426c-9caf-fd726ee1e18c
+langcode: uk
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: vlS3x4u0xP0MOKARQKNMvkEQh0SXFxBSA7CwVbMWZUc
+name: Bricky
+type: bricky
+description: 'Use <em>bricky pages</em> for your flexible content, such as ''Home'' or ''Company'' pages.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

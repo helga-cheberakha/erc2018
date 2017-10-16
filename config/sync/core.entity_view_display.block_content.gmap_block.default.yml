@@ -24,13 +24,12 @@ content:
         height: 300px
         width: 100%
         type: ROADMAP
-        zoom: '9'
+        zoom: '11'
         maxZoom: 18
         minZoom: 0
         mapTypeControl: 1
         streetViewControl: 1
         zoomControl: 1
-        scrollwheel: 1
         gestureHandling: auto
         draggable: 1
         style: ''
@@ -39,6 +38,7 @@ content:
         disableAutoPan: 1
         rotateControl: 0
         fullscreenControl: 0
+        scrollwheel: 0
         preferScrollingToZooming: 0
         disableDoubleClickZoom: 0
       use_overridden_map_settings: 0

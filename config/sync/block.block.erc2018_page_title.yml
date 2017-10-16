@@ -8,7 +8,7 @@ _core:
   default_config_hash: ELZbYFBnMNi5Y02EtX44XyHemJ452Gfy1Tv9SBARxJE
 id: erc2018_page_title
 theme: erc2018
-region: pre_header_first
+region: header_top_left
 weight: 0
 provider: null
 plugin: page_title_block

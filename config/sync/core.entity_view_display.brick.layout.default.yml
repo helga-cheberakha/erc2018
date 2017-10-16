@@ -1,0 +1,16 @@
+uuid: a77c1e02-7601-48b5-a660-a40ebdfc3266
+langcode: uk
+status: true
+dependencies:
+  config:
+    - eck.eck_type.brick.layout
+_core:
+  default_config_hash: naWGm4fTNkj4iOXZKng5aFwYVf3WP-z3xyxcJmj04Fc
+id: brick.layout.default
+targetEntityType: brick
+bundle: layout
+mode: default
+content: {  }
+hidden:
+  langcode: true
+  title: true

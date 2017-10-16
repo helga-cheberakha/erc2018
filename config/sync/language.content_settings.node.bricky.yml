@@ -1,0 +1,16 @@
+uuid: e8864450-7c83-4029-ba58-9fa3b8b50711
+langcode: ru
+status: true
+dependencies:
+  config:
+    - node.type.bricky
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.bricky
+target_entity_type_id: node
+target_bundle: bricky
+default_langcode: site_default
+language_alterable: true

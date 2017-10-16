@@ -1,0 +1,27 @@
+uuid: d8495ecb-e8c5-439b-9ee4-1899f00173fe
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_documents
+    - node.type.page
+  module:
+    - file
+id: node.page.field_documents
+field_name: field_documents
+entity_type: node
+bundle: page
+label: Documents
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: documents
+  file_extensions: 'txt pdf doc docs xls xlsx'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

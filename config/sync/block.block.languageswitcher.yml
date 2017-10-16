@@ -1,0 +1,20 @@
+uuid: d3b627f0-7706-4a58-a9e2-82c887c0a1b2
+langcode: uk
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - erc2018
+id: languageswitcher
+theme: erc2018
+region: header_top_right
+weight: 0
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Language switcher'
+  provider: language
+  label_display: '0'
+visibility: {  }

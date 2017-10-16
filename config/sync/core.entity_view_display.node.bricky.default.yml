@@ -1,0 +1,47 @@
+uuid: c58a278b-6d6f-46eb-bd65-970423f30d32
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.field.node.bricky.field_body
+    - field.field.node.bricky.field_description
+    - field.field.node.bricky.field_documents
+    - node.type.bricky
+  module:
+    - bricks
+    - file
+    - text
+    - user
+_core:
+  default_config_hash: XmOMHhzDNEchoQ5JoCkewi2E7sOtyw90oDRdGQ_Desw
+id: node.bricky.default
+targetEntityType: node
+bundle: bricky
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: bricks_nested
+    region: content
+  field_description:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_documents:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: file_default
+    region: content
+hidden:
+  langcode: true
+  links: true

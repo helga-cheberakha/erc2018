@@ -1,0 +1,1 @@
+window.drupalTranslations = {"strings":{"":{"Home":"\u0413\u043e\u043b\u043e\u0432\u043d\u0430"}}};

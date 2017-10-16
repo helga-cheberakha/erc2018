@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.field_documents
     - node.type.page
   module:
+    - file
     - text
     - user
 _core:
@@ -18,12 +20,17 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
-  links:
-    weight: 101
+  field_documents:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: file_table
     region: content
 hidden:
   langcode: true
+  links: true

@@ -1,0 +1,21 @@
+uuid: 47463b00-4c86-4717-86e6-09a6e3c69e38
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_subheader
+    - node.type.banner
+  module:
+    - text
+id: node.banner.field_banner_subheader
+field_name: field_banner_subheader
+entity_type: node
+bundle: banner
+label: Sub-header
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,14 @@
+uuid: dc8b5425-1f5a-44ec-a05b-49bdd8cde9fd
+langcode: uk
+status: true
+dependencies: {  }
+name: 1300x400sc
+label: 1300x400sc
+effects:
+  6e9031b8-80e4-401b-9908-ab4cfae5a984:
+    uuid: 6e9031b8-80e4-401b-9908-ab4cfae5a984
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1300
+      height: 400

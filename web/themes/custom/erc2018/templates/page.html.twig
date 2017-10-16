@@ -1,47 +1,5 @@
 <div id="toTop"><span class="glyphicon glyphicon-chevron-up"></span></div>
 
-{% if page.pre_header_first or page.pre_header_second or page.pre_header_third %}
-<!-- #pre-header -->
-<div id="pre-header" class="clearfix">
-    <div class="container">
-
-        <!-- #pre-header-inside -->
-        <div id="pre-header-inside" class="clearfix">
-            <div class="row">
-                <div class="col-md-4">
-                    {% if page.pre_header_first %}
-                    <div class="pre-header-area">
-                    {{ page.pre_header_first }}
-                    </div>
-                    {% endif %}
-                </div>
-                
-                <div class="col-md-4">
-                    {% if page.pre_header_second %}
-                    <div class="pre-header-area">
-                    {{ page.pre_header_second }}
-                    </div>
-                    {% endif %}
-                </div>
-
-                <div class="col-md-4">
-                    {% if page.pre_header_third %}
-
-                    <div class="pre-header-area">
-                    {{ page.pre_header_third }}
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <!-- EOF: #pre-header-inside -->
-
-    </div>
-    <div class="toggle-control"><a href="javascript:showPreHeader()"><span class="glyphicon glyphicon-plus"></span></a></div>
-</div>
-<!-- EOF: #pre-header -->    
-{% endif %}
-
 {% if page.header_top_left or page.header_top_right %}
 <!-- #header-top -->
 <div id="header-top" class="clearfix">
@@ -80,11 +38,23 @@
 <!-- EOF: #header-top -->    
 {% endif %}
 
+{% if page.banner %}
+    <!-- #banner -->
+    <div id="banner" class="clearfix">
+        <div class="container">
+            <div class="row">
+                {{ page.banner }}
+            </div>
+        </div>
+    </div>
+    <!-- EOF:#banner -->
+{% endif %}
+
 {% if page.header %}
 <!-- header -->
 <header id="header" role="banner" class="clearfix">
-    <div class="container">
 
+    <div class="container">
         <!-- #header-inside -->
         <div id="header-inside" class="clearfix">
             <div class="row">
@@ -94,8 +64,8 @@
             </div>
         </div>
         <!-- EOF: #header-inside -->
-
     </div>
+
 </header>
 <!-- EOF: #header --> 
 {% endif %}
@@ -125,26 +95,6 @@
     </div>
 </div>
 <!-- EOF: #main-navigation -->
-
-{% if page.banner %}
-<!-- #banner -->
-<div id="banner" class="clearfix">
-    <div class="container">
-        
-        <!-- #banner-inside -->
-        <div id="banner-inside" class="clearfix">
-            <div class="row">
-                <div class="col-md-12">
-                {{ page.banner }}
-                </div>
-            </div>
-        </div>
-        <!-- EOF: #banner-inside -->        
-
-    </div>
-</div>
-<!-- EOF:#banner -->
-{% endif %}
 
 <!-- #page -->
 <div id="page" class="clearfix">
@@ -238,26 +188,6 @@
         </div>
     </div>
     <!-- EOF:#main-content -->
-    
-    {% if page.bottom_content %}
-    <!-- #bottom-content -->
-    <div id="bottom-content" class="clearfix">
-        <div class="container">
-
-            <!-- #bottom-content-inside -->
-            <div id="bottom-content-inside" class="clearfix">
-                <div class="row">
-                    <div class="col-md-12">
-                    {{ page.bottom_content }}
-                    </div>
-                </div>
-            </div>
-            <!-- EOF:#bottom-content-inside -->
-
-        </div>
-    </div>
-    <!-- EOF: #bottom-content -->
-    {% endif %}
 
 </div>
 <!-- EOF:#page -->
@@ -294,8 +224,23 @@
 <!-- EOF #footer -->
 {% endif %}
 
-<footer id="subfooter" class="clearfix">
-    <div class="container">
+<footer id="subfooter" class="clearfix navbar fixed-bottom navbar-light bg-faded">
+
+    {% if page.bottom_content %}
+        <!-- #bottom-content -->
+        <div id="bottom-content" class="clearfix">
+
+            <div class="container-fluid">
+                <div class="row">
+                  {{ page.bottom_content }}
+                </div>
+            </div>
+
+        </div>
+        <!-- EOF: #bottom-content -->
+    {% endif %}
+
+    <div class="container-fluid">
         
         <!-- #subfooter-inside -->
         <div id="subfooter-inside" class="clearfix">
@@ -303,14 +248,9 @@
                 <div class="col-md-12">
                     <!-- #subfooter-left -->
                     <div class="subfooter-area">
-                    {% if secondary_menu %}
-                    <nav id="secondary-menu" class="navigation" role="navigation">
-                    {{ secondary_menu }}
-                    </nav>
-                    {% endif %}                    
 
                     {% if page.footer %}
-                    {{ page.footer }}
+                        {{ page.footer }}
                     {% endif %}
 
                     </div>
