@@ -1,0 +1,5 @@
+name: ERC 2018 Common
+type: module
+description: Custom sitespecific code
+core: 8.x
+package: Custom

@@ -1,0 +1,23 @@
+uuid: e2a2ffbe-ddaf-4a24-a0aa-c71d57300565
+langcode: ru
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: pathauto_taxonomy_terms_tags
+label: 'Pathauto: Taxonomy terms: Tags'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/news/[term:name]'
+selection_criteria:
+  7a3c2c05-6ca1-442c-ba0a-598de5ef6ef9:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      tags: tags
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 7a3c2c05-6ca1-442c-ba0a-598de5ef6ef9
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,15 @@
+uuid: b8f9a69a-47c6-4448-8a5d-6d7c4e068563
+langcode: ru
+status: true
+dependencies: {  }
+name: 320x220s
+label: 320x220s
+effects:
+  9c0bd61c-b8c0-4eda-b3aa-b71852378df9:
+    uuid: 9c0bd61c-b8c0-4eda-b3aa-b71852378df9
+    id: image_scale
+    weight: 1
+    data:
+      width: 320
+      height: 220
+      upscale: true

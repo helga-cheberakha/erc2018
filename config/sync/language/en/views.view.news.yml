@@ -1,0 +1,8 @@
+display:
+  default:
+    display_options:
+      title: News
+  page_news:
+    display_options:
+      menu:
+        title: News

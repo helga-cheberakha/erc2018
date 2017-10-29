@@ -1,0 +1,18 @@
+uuid: 238ac323-00f5-496f-9cb7-95b71d61b1df
+langcode: uk
+status: true
+dependencies:
+  theme:
+    - erc2018
+id: pagetitle
+theme: erc2018
+region: content
+weight: -4
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

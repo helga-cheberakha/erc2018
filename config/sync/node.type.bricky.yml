@@ -11,9 +11,9 @@ third_party_settings:
     parent: 'main:'
 _core:
   default_config_hash: vlS3x4u0xP0MOKARQKNMvkEQh0SXFxBSA7CwVbMWZUc
-name: Bricky
+name: 'Basic page'
 type: bricky
-description: 'Use <em>bricky pages</em> for your flexible content, such as ''Home'' or ''Company'' pages.'
+description: 'Use <em>basic pages</em> for your flexible content, such as ''Home'' or ''Company'' pages.'
 help: ''
 new_revision: false
 preview_mode: 1

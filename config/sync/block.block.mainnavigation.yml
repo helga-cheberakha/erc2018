@@ -10,8 +10,8 @@ dependencies:
     - erc2018
 id: mainnavigation
 theme: erc2018
-region: navigation
-weight: 0
+region: header_top_right
+weight: -5
 provider: null
 plugin: 'system_menu_block:main'
 settings:

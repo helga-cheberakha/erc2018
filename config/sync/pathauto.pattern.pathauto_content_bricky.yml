@@ -1,0 +1,22 @@
+uuid: 5c1cda76-7105-4f96-939c-c7c44eece2c5
+langcode: ru
+status: true
+dependencies:
+  module:
+    - node
+id: pathauto_content_bricky
+label: 'Pathauto: Content: Bricky'
+type: 'canonical_entities:node'
+pattern: '/[node:title]'
+selection_criteria:
+  a55b3de6-5d75-4b86-aa7c-994d63cc846a:
+    id: node_type
+    bundles:
+      bricky: bricky
+    negate: false
+    context_mapping:
+      node: node
+    uuid: a55b3de6-5d75-4b86-aa7c-994d63cc846a
+selection_logic: and
+weight: -5
+relationships: {  }

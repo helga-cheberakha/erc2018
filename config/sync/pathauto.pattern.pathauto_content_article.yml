@@ -1,0 +1,22 @@
+uuid: 1aaa6934-6364-4c03-ac81-8052a0505863
+langcode: ru
+status: true
+dependencies:
+  module:
+    - node
+id: pathauto_content_article
+label: 'Pathauto: Content: Article'
+type: 'canonical_entities:node'
+pattern: '/news/[node:title]'
+selection_criteria:
+  3d1bc289-03e4-4ac4-a76b-61d4110d2511:
+    id: node_type
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 3d1bc289-03e4-4ac4-a76b-61d4110d2511
+selection_logic: and
+weight: -5
+relationships: {  }

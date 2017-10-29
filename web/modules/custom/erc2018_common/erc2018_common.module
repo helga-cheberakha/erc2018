@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Contains erc2018_common.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\editor\Entity\Editor;
+use Drupal\field\FieldStorageConfigInterface;
+use Drupal\file\Entity\File;
+
+/**
+ * Implements hook_language_switch_links_alter().
+ */
+function erc2018_common_language_switch_links_alter(array &$links, $type, \Drupal\Core\Url $url) {
+  // Override link titles.
+  foreach ($links as $id => $link) {
+    $links[$id]['title'] = strtoupper($id);
+  }
+}
