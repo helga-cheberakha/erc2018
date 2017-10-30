@@ -21,13 +21,13 @@ class __TwigTemplate_108b55d918e6b38ac861eebeb0d648893ac7d1398d5817a259b1db7592d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $tags = array("set" => 10, "trans" => 17);
+        $tags = array("set" => 10);
         $filters = array("clean_id" => 10);
         $functions = array();
 
         try {
             $this->env->getExtension('Twig_Extension_Sandbox')->checkSecurity(
-                array('set', 'trans'),
+                array('set'),
                 array('clean_id'),
                 array()
             );
@@ -57,40 +57,24 @@ class __TwigTemplate_108b55d918e6b38ac861eebeb0d648893ac7d1398d5817a259b1db7592d
     public function block_content($context, array $blocks = array())
     {
         // line 13
-        echo "  <div";
-        echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Drupal\Core\Template\TwigExtension')->escapeFilter($this->env, $this->getAttribute(($context["content_attributes"] ?? null), "addClass", array(0 => "content"), "method"), "html", null, true));
-        echo ">
-    ";
-        // line 15
-        echo "    <div class=\"menu-toggle-target menu-toggle-target-show\" id=\"";
-        echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Drupal\Core\Template\TwigExtension')->escapeFilter($this->env, ($context["show_anchor"] ?? null), "html", null, true));
-        echo "\"></div>
-    <div class=\"menu-toggle-target\" id=\"";
-        // line 16
-        echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Drupal\Core\Template\TwigExtension')->escapeFilter($this->env, ($context["hide_anchor"] ?? null), "html", null, true));
-        echo "\"></div>
-    <a class=\"menu-toggle\" href=\"#";
-        // line 17
-        echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Drupal\Core\Template\TwigExtension')->escapeFilter($this->env, ($context["show_anchor"] ?? null), "html", null, true));
-        echo "\">";
-        echo t("Show &mdash; @configuration.label", array("@configuration.label" => $this->getAttribute(($context["configuration"] ?? null), "label", array()), ));
-        echo "</a>
-    <a class=\"menu-toggle menu-toggle--hide\" href=\"#";
-        // line 18
-        echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Drupal\Core\Template\TwigExtension')->escapeFilter($this->env, ($context["hide_anchor"] ?? null), "html", null, true));
-        echo "\">";
-        echo t("Hide &mdash; @configuration.label", array("@configuration.label" => $this->getAttribute(($context["configuration"] ?? null), "label", array()), ));
-        echo "</a>
+        echo "  <nav class=\"navbar\" role=\"navigation\">
+    <div class=\"container-fluid\">
+      <div class=\"navbar-header\">
+        <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#myNavbar\">
+          <span class=\"icon-bar\"></span>
+          <span class=\"icon-bar\"></span>
+          <span class=\"icon-bar\"></span>
+        </button>
+      </div>
 
-    <nav id=\"navbar\" class=\"collapse navbar-collapse\">
-      <div class=\"container-fluid\">
+      <div class=\"collapse navbar-collapse\" id=\"myNavbar\">
         ";
-        // line 22
+        // line 24
         echo $this->env->getExtension('Twig_Extension_Sandbox')->ensureToStringAllowed($this->env->getExtension('Drupal\Core\Template\TwigExtension')->escapeFilter($this->env, ($context["content"] ?? null), "html", null, true));
         echo "
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
 ";
     }
 
@@ -106,7 +90,7 @@ class __TwigTemplate_108b55d918e6b38ac861eebeb0d648893ac7d1398d5817a259b1db7592d
 
     public function getDebugInfo()
     {
-        return array (  89 => 22,  80 => 18,  74 => 17,  70 => 16,  65 => 15,  60 => 13,  57 => 12,  53 => 1,  51 => 11,  49 => 10,  11 => 1,);
+        return array (  73 => 24,  60 => 13,  57 => 12,  53 => 1,  51 => 11,  49 => 10,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

@@ -1,6 +1,6 @@
 uuid: b19dc9fc-a218-4905-8df1-b3ec01524ac3
 langcode: ru
-status: true
+status: false
 dependencies:
   module:
     - system

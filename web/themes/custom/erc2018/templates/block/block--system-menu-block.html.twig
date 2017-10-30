@@ -10,17 +10,19 @@
 {% set show_anchor = "show-" ~ attributes.id|clean_id %}
 {% set hide_anchor = "hide-" ~ attributes.id|clean_id %}
 {% block content %}
-  <div{{ content_attributes.addClass('content') }}>
-    {# When rendering a menu without label, render a menu toggle. #}
-    <div class="menu-toggle-target menu-toggle-target-show" id="{{ show_anchor }}"></div>
-    <div class="menu-toggle-target" id="{{ hide_anchor }}"></div>
-    <a class="menu-toggle" href="#{{ show_anchor }}">{% trans %} Show &mdash; {{ configuration.label }}{% endtrans %}</a>
-    <a class="menu-toggle menu-toggle--hide" href="#{{ hide_anchor }}">{% trans %} Hide &mdash; {{ configuration.label }}{% endtrans %}</a>
+  <nav class="navbar" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
 
-    <nav id="navbar" class="collapse navbar-collapse">
-      <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="myNavbar">
         {{ content }}
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
 {% endblock %}
