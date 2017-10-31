@@ -35,6 +35,7 @@
         "drupal/inline_entity_form": "^1.0@beta",
         "drupal/lang_dropdown": "^2.0@beta",
         "drupal/pathauto": "^1.0",
+        "drupal/rules": "^3.0@alpha",
         "drupal/simple_gmap": "^1.4",
         "drupal/superfish": "^1.1",
         "drupal/tagadelic": "^3.0@alpha",

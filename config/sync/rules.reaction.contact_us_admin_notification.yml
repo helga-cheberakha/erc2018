@@ -1,0 +1,48 @@
+uuid: 3c21c1cb-4eb0-4d97-8919-ffb80437a7b1
+langcode: uk
+status: true
+dependencies: {  }
+id: contact_us_admin_notification
+label: 'Contact Us: Admin Notification'
+events:
+  -
+    event_name: 'rules_entity_insert:contact_message'
+description: ''
+tags:
+  - ''
+config_version: '3'
+expression:
+  id: rules_rule
+  uuid: cd82bda8-1b98-4e8d-86ea-c24df73baacf
+  conditions:
+    id: rules_and
+    uuid: 4366d7fc-7bb5-4d57-90e0-be4935b9dfa0
+    conditions: {  }
+  actions:
+    id: rules_action_set
+    uuid: b9341e10-08af-4dbc-bed9-1c07cf7855b4
+    actions:
+      -
+        id: rules_action
+        uuid: 061e9fe5-9eda-4696-b38b-b64331e65bc8
+        context_values:
+          to:
+            - helga.cheberakha@gmail.com
+          subject: 'Contact Us form has been submitted'
+          message: 'Contact Us form has been submitted by contact_message.mail.value. <br>Subject: contact_message.Message: contact_message.message.'
+          reply: ''
+          language: ''
+        context_mapping: {  }
+        context_processors:
+          to:
+            rules_tokens: {  }
+          subject:
+            rules_tokens: {  }
+          message:
+            rules_tokens: {  }
+          reply:
+            rules_tokens: {  }
+          language:
+            rules_tokens: {  }
+        provides_mapping: {  }
+        action_id: rules_send_email

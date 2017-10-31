@@ -20,6 +20,7 @@ regions:
     content: Content
     sidebar_first: 'Sidebar First'
     sidebar_second: 'Sidebar Second'
+    full_width_content: 'Full Width Content'
     bottom_content: 'Bottom Content'
     footer_first: 'Footer First'
     footer_second: 'Footer Second'

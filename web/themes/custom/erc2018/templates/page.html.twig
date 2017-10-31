@@ -226,6 +226,20 @@
 
 <footer id="subfooter" class="clearfix navbar fixed-bottom navbar-light bg-faded">
 
+    {% if page.full_width_content %}
+        <!-- #bottom-content -->
+        <div id="full-width-content" class="clearfix">
+
+            <div class="container">
+                <div class="row">
+                    {{ page.full_width_content }}
+                </div>
+            </div>
+
+        </div>
+        <!-- EOF: #bottom-content -->
+    {% endif %}
+
     {% if page.bottom_content %}
         <!-- #bottom-content -->
         <div id="bottom-content" class="clearfix">

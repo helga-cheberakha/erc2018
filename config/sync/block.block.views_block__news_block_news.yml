@@ -1,0 +1,30 @@
+uuid: cc57cad1-2461-4f43-9d08-949b97d2ddd2
+langcode: uk
+status: true
+dependencies:
+  config:
+    - views.view.news
+  module:
+    - system
+    - views
+  theme:
+    - erc2018
+id: views_block__news_block_news
+theme: erc2018
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:news-block_news'
+settings:
+  id: 'views_block:news-block_news'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

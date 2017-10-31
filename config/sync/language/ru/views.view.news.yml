@@ -2,7 +2,3 @@ display:
   default:
     display_options:
       title: Новости
-  page_news:
-    display_options:
-      menu:
-        title: Новости
