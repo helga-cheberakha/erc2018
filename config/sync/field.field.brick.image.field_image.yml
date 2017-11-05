@@ -6,7 +6,14 @@ dependencies:
     - eck.eck_type.brick.image
     - field.storage.brick.field_image
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 _core:
   default_config_hash: 7sNXb0-ELAw8MBxByD5gHVqfGvdw0mlWxIOepe6x1uo
 id: brick.image.field_image
@@ -16,7 +23,7 @@ bundle: image
 label: Image
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

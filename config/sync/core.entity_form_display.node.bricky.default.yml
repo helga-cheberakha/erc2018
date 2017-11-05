@@ -4,14 +4,30 @@ status: true
 dependencies:
   config:
     - field.field.node.bricky.field_body
-    - field.field.node.bricky.field_description
     - field.field.node.bricky.field_documents
+    - field.field.node.bricky.field_featured_page
+    - field.field.node.bricky.field_teaser_section
     - node.type.bricky
   module:
     - bricks_inline
+    - field_group
     - file
+    - paragraphs
     - path
-    - text
+third_party_settings:
+  field_group:
+    group_teaser_section:
+      children:
+        - field_teaser_section
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: false
+      label: 'Teaser section'
 _core:
   default_config_hash: hj_dqkG2Wondg3RN_GoLWIcTmTWRdjlIVZ2VYYFz9Lc
 id: node.bricky.default
@@ -21,12 +37,12 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     region: content
   field_body:
-    weight: 2
+    weight: 3
     settings:
       form_mode: default
       label_singular: ''
@@ -38,31 +54,44 @@ content:
     third_party_settings: {  }
     type: bricks_tree_inline
     region: content
-  field_description:
-    weight: 1
-    settings:
-      rows: 3
-      placeholder: ''
-    third_party_settings: {  }
-    type: text_textarea
-    region: content
   field_documents:
-    weight: 3
+    weight: 4
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
     region: content
+  field_featured_page:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_teaser_section:
+    type: paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: all
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: paragraph_teaser_section
+    third_party_settings: {  }
+    region: content
   langcode:
     type: language_select
-    weight: 4
+    weight: 5
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 9
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     region: content
@@ -70,21 +99,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 8
     third_party_settings: {  }
     region: content
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 12
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 9
     third_party_settings: {  }
     region: content
   title:
@@ -96,13 +125,13 @@ content:
     third_party_settings: {  }
     region: content
   translation:
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60

@@ -4,13 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.bricky.field_body
-    - field.field.node.bricky.field_description
     - field.field.node.bricky.field_documents
+    - field.field.node.bricky.field_featured_page
+    - field.field.node.bricky.field_teaser_section
     - node.type.bricky
   module:
     - bricks
     - file
-    - text
     - user
 _core:
   default_config_hash: XmOMHhzDNEchoQ5JoCkewi2E7sOtyw90oDRdGQ_Desw
@@ -20,7 +20,7 @@ bundle: bricky
 mode: default
 content:
   field_body:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       view_mode: default
@@ -28,20 +28,15 @@ content:
     third_party_settings: {  }
     type: bricks_nested
     region: content
-  field_description:
-    weight: 0
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
-    region: content
   field_documents:
-    weight: 2
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: file_default
     region: content
 hidden:
+  field_featured_page: true
+  field_teaser_section: true
   langcode: true
   links: true

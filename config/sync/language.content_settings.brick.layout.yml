@@ -1,0 +1,16 @@
+uuid: 7b15d202-cdd6-4f43-9634-c389b23d5b3b
+langcode: ru
+status: true
+dependencies:
+  config:
+    - eck.eck_type.brick.layout
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: brick.layout
+target_entity_type_id: brick
+target_bundle: layout
+default_langcode: site_default
+language_alterable: false

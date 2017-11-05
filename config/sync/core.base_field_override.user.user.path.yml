@@ -1,0 +1,19 @@
+uuid: 4a241e6a-9309-4dc6-80c2-007702b3e73e
+langcode: ru
+status: true
+dependencies:
+  module:
+    - path
+    - user
+id: user.user.path
+field_name: path
+entity_type: user
+bundle: user
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

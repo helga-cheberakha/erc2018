@@ -1,0 +1,31 @@
+uuid: 0b7d8ce7-27d0-447c-a698-01d427c2cd30
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser_section
+    - node.type.bricky
+    - paragraphs.paragraphs_type.paragraph_teaser_section
+  module:
+    - entity_reference_revisions
+id: node.bricky.field_teaser_section
+field_name: field_teaser_section
+entity_type: node
+bundle: bricky
+label: 'Teaser section'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      paragraph_teaser_section: paragraph_teaser_section
+    target_bundles_drag_drop:
+      paragraph_teaser_section:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

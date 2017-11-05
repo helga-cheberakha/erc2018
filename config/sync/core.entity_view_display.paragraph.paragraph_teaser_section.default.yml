@@ -1,0 +1,33 @@
+uuid: b02eb649-ee0a-4a3e-a38c-b4f17c13d190
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.paragraph_teaser_section.field_teaser_image
+    - field.field.paragraph.paragraph_teaser_section.field_teaser_title
+    - paragraphs.paragraphs_type.paragraph_teaser_section
+  module:
+    - image
+id: paragraph.paragraph_teaser_section.default
+targetEntityType: paragraph
+bundle: paragraph_teaser_section
+mode: default
+content:
+  field_teaser_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_teaser_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

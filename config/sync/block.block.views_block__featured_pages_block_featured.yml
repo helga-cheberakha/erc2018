@@ -1,0 +1,30 @@
+uuid: 0bf726a1-80c8-4a66-97a7-4527d648eb90
+langcode: uk
+status: true
+dependencies:
+  config:
+    - views.view.featured_pages
+  module:
+    - system
+    - views
+  theme:
+    - erc2018
+id: views_block__featured_pages_block_featured
+theme: erc2018
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:featured_pages-block_featured'
+settings:
+  id: 'views_block:featured_pages-block_featured'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

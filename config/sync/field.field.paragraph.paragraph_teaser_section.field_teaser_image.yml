@@ -1,0 +1,45 @@
+uuid: f0501a90-5695-4449-8f4b-683dcfecd08f
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_teaser_image
+    - paragraphs.paragraphs_type.paragraph_teaser_section
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: paragraph.paragraph_teaser_section.field_teaser_image
+field_name: field_teaser_image
+entity_type: paragraph
+bundle: paragraph_teaser_section
+label: Image
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: teaser
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: 5MB
+  max_resolution: ''
+  min_resolution: 200x200
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image
