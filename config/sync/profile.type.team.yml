@@ -1,0 +1,15 @@
+uuid: 009d3591-38c6-47f5-a82e-f87dc7ccf223
+langcode: uk
+status: true
+dependencies: {  }
+id: team
+label: Team
+registration: true
+multiple: false
+roles:
+  team: team
+  authenticated: '0'
+  administrator: '0'
+weight: 0
+use_revisions: true
+description: ''

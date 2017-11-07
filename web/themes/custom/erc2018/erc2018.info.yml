@@ -14,17 +14,12 @@ regions:
     header_top_right: 'Header Top Right'
     banner: 'Banner'
     header: Header
-    navigation: 'Navigation'
-    highlighted: Highlighted
     promoted: 'Promoted'
+    highlighted: Highlighted
     content: Content
     sidebar_first: 'Sidebar First'
     sidebar_second: 'Sidebar Second'
     full_width_content: 'Full Width Content'
     bottom_content: 'Bottom Content'
-    footer_first: 'Footer First'
-    footer_second: 'Footer Second'
     footer: Footer
     help: Help
-    page_top: 'Page top'
-    page_bottom: 'Page bottom'

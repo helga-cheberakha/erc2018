@@ -1,0 +1,66 @@
+uuid: 83a17c01-e1e3-4519-b538-87a6b3458864
+langcode: uk
+status: true
+dependencies:
+  module:
+    - options
+    - profile
+id: profile.field_team_class
+field_name: field_team_class
+entity_type: profile
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: my
+      label: MY
+    -
+      value: wy
+      label: WY
+    -
+      value: xy
+      label: XY
+    -
+      value: mo
+      label: MO
+    -
+      value: wo
+      label: WO
+    -
+      value: xo
+      label: XO
+    -
+      value: mv
+      label: MV
+    -
+      value: wv
+      label: WV
+    -
+      value: xv
+      label: XV
+    -
+      value: msv
+      label: MSV
+    -
+      value: wsv
+      label: WSV
+    -
+      value: xsv
+      label: XSV
+    -
+      value: muv
+      label: MUV
+    -
+      value: wuv
+      label: WUV
+    -
+      value: xuv
+      label: WUV
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

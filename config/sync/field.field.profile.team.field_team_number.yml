@@ -1,0 +1,23 @@
+uuid: 66eba915-9e4c-48ff-9049-bcb3c887358e
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_team_number
+    - profile.type.team
+id: profile.team.field_team_number
+field_name: field_team_number
+entity_type: profile
+bundle: team
+label: 'Team number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

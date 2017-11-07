@@ -1,0 +1,21 @@
+uuid: 2650dd62-f9b5-42ab-836f-b7a0df8f96f4
+langcode: uk
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - profile
+id: profile.field_participants
+field_name: field_participants
+entity_type: profile
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

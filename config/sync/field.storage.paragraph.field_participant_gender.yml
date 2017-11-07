@@ -1,0 +1,27 @@
+uuid: 3720d417-dc77-4da8-a177-fa239498998f
+langcode: uk
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_participant_gender
+field_name: field_participant_gender
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: m
+      label: Male
+    -
+      value: w
+      label: Female
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

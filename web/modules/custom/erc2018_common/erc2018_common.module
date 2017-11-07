@@ -5,11 +5,7 @@
  * Contains erc2018_common.module.
  */
 
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\editor\Entity\Editor;
-use Drupal\field\FieldStorageConfigInterface;
-use Drupal\file\Entity\File;
+use \Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_language_switch_links_alter().
@@ -18,5 +14,32 @@ function erc2018_common_language_switch_links_alter(array &$links, $type, \Drupa
   // Override link titles.
   foreach ($links as $id => $link) {
     $links[$id]['title'] = strtoupper($id);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function erc2018_common_form_user_register_form_alter(&$form, FormStateInterface $form_state) {
+  // Hide user account name.
+  // It will be set up automatically.
+  if (isset($form['account']['name'])) {
+    $form['account']['name']['#access'] = FALSE;
+  }
+
+  // Set value of the user status to "Blocked" by default.
+  if (isset($form['account']['status'])) {
+    $form['account']['status']['#default_value'] = 0;
+  }
+
+  // Hide 'notify' as unnecessary.
+  if (isset($form['account']['notify'])) {
+    $form['account']['notify']['#access'] = FALSE;
+  }
+
+  // Override value for submit btn.
+  if (isset($form['actions']['submit'])) {
+    $btn_value = t('Register new team');
+    //$form['actions']['submit']['#value'];
   }
 }

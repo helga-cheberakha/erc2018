@@ -1,279 +1,228 @@
 <div id="toTop"><span class="glyphicon glyphicon-chevron-up"></span></div>
 
 {% if page.header_top_left or page.header_top_right %}
-<!-- #header-top -->
-<div id="header-top" class="clearfix">
+  <!-- #header-top -->
+  <div id="header-top" class="clearfix">
     <div class="container">
 
-        <!-- #header-top-inside -->
-        <div id="header-top-inside" class="clearfix">
-            <div class="row">
-            
-            {% if page.header_top_left %}
+      <!-- #header-top-inside -->
+      <div id="header-top-inside" class="clearfix">
+        <div class="row">
+
+          {% if page.header_top_left %}
             <div class="{{header_top_left_grid_class}}">
-                <!-- #header-top-left -->
-                <div id="header-top-left" class="clearfix">
-                    {{ page.header_top_left }}
-                </div>
-                <!-- EOF:#header-top-left -->
+              <!-- #header-top-left -->
+              <div id="header-top-left" class="clearfix">
+                {{ page.header_top_left }}
+              </div>
+              <!-- EOF:#header-top-left -->
             </div>
-            {% endif %}
-            
-            {% if page.header_top_right %}
+          {% endif %}
+
+          {% if page.header_top_right %}
             <div class="{{header_top_right_grid_class}}">
-                <!-- #header-top-right -->
-                <div id="header-top-right" class="clearfix">
-                    {{ page.header_top_right }}
-                </div>
-                <!-- EOF:#header-top-right -->
+              <!-- #header-top-right -->
+              <div id="header-top-right" class="clearfix">
+                {{ page.header_top_right }}
+              </div>
+              <!-- EOF:#header-top-right -->
             </div>
-            {% endif %}
-            
-            </div>
+          {% endif %}
+
         </div>
-        <!-- EOF: #header-top-inside -->
+      </div>
+      <!-- EOF: #header-top-inside -->
 
     </div>
-</div>
-<!-- EOF: #header-top -->    
+  </div>
+  <!-- EOF: #header-top -->
 {% endif %}
 
 {% if page.banner %}
-    <!-- #banner -->
-    <div id="banner" class="clearfix">
-        <div class="container">
-            <div class="row">
-                {{ page.banner }}
-            </div>
-        </div>
+  <!-- #banner -->
+  <div id="banner" class="clearfix">
+    <div class="container">
+      <div class="row">
+        {{ page.banner }}
+      </div>
     </div>
-    <!-- EOF:#banner -->
+  </div>
+  <!-- EOF:#banner -->
 {% endif %}
 
 {% if page.header %}
-<!-- header -->
-<header id="header" role="banner" class="clearfix">
+  <!-- header -->
+  <header id="header" role="banner" class="clearfix">
 
     <div class="container">
-        <!-- #header-inside -->
-        <div id="header-inside" class="clearfix">
-            <div class="row">
-                <div class="col-md-12">
-                    {{ page.header }}
-                </div>
-            </div>
+      <!-- #header-inside -->
+      <div id="header-inside" class="clearfix">
+        <div class="row">
+          <div class="col-md-12">
+            {{ page.header }}
+          </div>
         </div>
-        <!-- EOF: #header-inside -->
+      </div>
+      <!-- EOF: #header-inside -->
     </div>
 
-</header>
-<!-- EOF: #header --> 
+  </header>
+  <!-- EOF: #header -->
 {% endif %}
 
-<!-- #main-navigation --> 
-<div id="main-navigation" class="clearfix">
-    <div class="container">
+{% if page.promoted %}
+  <!-- #promoted -->
+  <div id="promoted" class="clearfix">
+    <div id="full-width-content" class="clearfix">
 
-        <!-- #main-navigation-inside -->
-        <div id="main-navigation-inside" class="clearfix">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav role="navigation" class="clearfix">
-                        {% if page.navigation %}
-                        {{ page.navigation }}
-                        {% else %}
-                            {% if main_menu %}
-                            {{ main_menu }}
-                            {% endif %}
-                        {% endif %}
-                    </nav>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          {{ page.promoted }}
         </div>
-        <!-- EOF: #main-navigation-inside -->
+      </div>
 
     </div>
-</div>
-<!-- EOF: #main-navigation -->
+  </div>
+  <!-- EOF: #promoted -->
+{% endif %}
 
 <!-- #page -->
 <div id="page" class="clearfix">
-    {% if page.highlighted %}
-    <!-- #top-content -->
+
+  <!-- Highlight -->
+  {% if page.highlighted %}
     <div id="top-content" class="clearfix">
-        <div class="container">
+      <div class="container">
 
-            <!-- #top-content-inside -->
-            <div id="top-content-inside" class="clearfix">
-                <div class="row">
-                    <div class="col-md-12">
-                    {{ page.highlighted }}
-                    </div>
-                </div>
+        <!-- #top-content-inside -->
+        <div id="top-content-inside" class="clearfix">
+          <div class="row">
+            <div class="col-md-12">
+              {{ page.highlighted }}
             </div>
-            <!-- EOF:#top-content-inside -->
-
+          </div>
         </div>
+        <!-- EOF:#top-content-inside -->
+
+      </div>
     </div>
-    <!-- EOF: #top-content -->
-    {% endif %}
+  {% endif %}
 
-    <!-- #main-content -->
-    <div id="main-content">
-        <div class="container">
-        
-            <div class="row">
-                {% if page.sidebar_first %}
-                <aside class="{{sidebar_grid_class}}">  
-                    <!--#sidebar-first-->
-                    <section id="sidebar-first" class="sidebar clearfix">
-                    {{ page.sidebar_first }}
-                    </section>
-                    <!--EOF:#sidebar-first-->
-                </aside>
-                {% endif %}
+  <!-- #main-content -->
+  <div id="main-content">
+    <div class="container">
 
-                <section class="{{main_grid_class}}">
+      <div class="row">
 
-                    <!-- #main -->
-                    <div id="main" class="clearfix">
-                    
-                        <!-- #breadcrumb -->
-                        <div id="breadcrumb" class="clearfix">
-                            <!-- #breadcrumb-inside -->
-                            <div id="breadcrumb-inside" class="clearfix">
-                            {{ breadcrumb }}
-                            </div>
-                            <!-- EOF: #breadcrumb-inside -->
-                        </div>
-                        <!-- EOF: #breadcrumb -->
+        {% if page.sidebar_first %}
+          <aside class="{{sidebar_grid_class}}">
+            <!--#sidebar-first-->
+            <section id="sidebar-first" class="sidebar clearfix">
+              {{ page.sidebar_first }}
+            </section>
+            <!--EOF:#sidebar-first-->
+          </aside>
+        {% endif %}
 
-                        {% if page.promoted %}
-                        <!-- #promoted -->
-                            <div id="promoted" class="clearfix">
-                                <div id="promoted-inside" class="clearfix">
-                                {{ page.promoted }}
-                                </div>
-                            </div>
-                        <!-- EOF: #promoted -->
-                        {% endif %}
+        <section class="{{main_grid_class}}">
 
-                        <!-- EOF:#content-wrapper -->
-                        <div id="content-wrapper">
+          <!-- #main -->
+          <div id="main" class="clearfix">
 
-                            {% if page.content %}
-                                {{ page.content }}
-                            {% endif %}
-
-                        </div>
-                        <!-- EOF:#content-wrapper -->
-
-                    </div>
-                    <!-- EOF:#main -->
-
-                </section>
-                
-                {% if page.sidebar_second %}
-                <aside class="{{sidebar_grid_class}}">
-                    <!--#sidebar-second-->
-                    <section id="sidebar-second" class="sidebar clearfix">
-                    {{ page.sidebar_second }}
-                    </section>
-                    <!--EOF:#sidebar-second-->
-                </aside>
-                {% endif %}
-        
+            <!-- #breadcrumb -->
+            <div id="breadcrumb" class="clearfix">
+              <!-- #breadcrumb-inside -->
+              <div id="breadcrumb-inside" class="clearfix">
+                {{ breadcrumb }}
+              </div>
+              <!-- EOF: #breadcrumb-inside -->
             </div>
+            <!-- EOF: #breadcrumb -->
 
-        </div>
+            <!-- EOF:#content-wrapper -->
+            <div id="content-wrapper">
+
+              {% if page.content %}
+                {{ page.content }}
+              {% endif %}
+
+            </div>
+            <!-- EOF:#content-wrapper -->
+
+          </div>
+          <!-- EOF:#main -->
+
+        </section>
+
+        {% if page.sidebar_second %}
+          <aside class="{{sidebar_grid_class}}">
+            <!--#sidebar-second-->
+            <section id="sidebar-second" class="sidebar clearfix">
+              {{ page.sidebar_second }}
+            </section>
+            <!--EOF:#sidebar-second-->
+          </aside>
+        {% endif %}
+
+      </div>
+
     </div>
-    <!-- EOF:#main-content -->
+  </div>
+  <!-- EOF:#main-content -->
 
 </div>
 <!-- EOF:#page -->
 
-{% if page.footer_first or page.footer_second or page.footer_third or page.footer_fourth %}
-<!-- #footer -->
-<footer id="footer" class="clearfix">
-    <div class="container">
-    
-        <!-- #footer-inside -->
-        <div id="footer-inside" class="clearfix">
-            <div class="row">
-                <div class="col-md-6">
-                    {% if page.footer_first %}
-                    <div class="footer-area">
-                    {{ page.footer_first }}
-                    </div>
-                    {% endif %}
-                </div>
-                
-                <div class="col-md-6">
-                    {% if page.footer_second %}
-                    <div class="footer-area">
-                    {{ page.footer_second }}
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <!-- EOF: #footer-inside -->
-    
-    </div>
-</footer> 
-<!-- EOF #footer -->
-{% endif %}
-
 <footer id="subfooter" class="clearfix navbar fixed-bottom navbar-light bg-faded">
 
-    {% if page.full_width_content %}
-        <!-- #bottom-content -->
-        <div id="full-width-content" class="clearfix">
+  {% if page.full_width_content %}
+    <!-- #bottom-content -->
+    <div id="full-width-content" class="clearfix">
 
-            <div class="container">
-                <div class="row">
-                    {{ page.full_width_content }}
-                </div>
-            </div>
-
+      <div class="container">
+        <div class="row">
+          {{ page.full_width_content }}
         </div>
-        <!-- EOF: #bottom-content -->
-    {% endif %}
+      </div>
 
-    {% if page.bottom_content %}
-        <!-- #bottom-content -->
-        <div id="bottom-content" class="clearfix">
-
-            <div class="container-fluid">
-                <div class="row">
-                  {{ page.bottom_content }}
-                </div>
-            </div>
-
-        </div>
-        <!-- EOF: #bottom-content -->
-    {% endif %}
-
-    <div class="container-fluid">
-        
-        <!-- #subfooter-inside -->
-        <div id="subfooter-inside" class="clearfix">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- #subfooter-left -->
-                    <div class="subfooter-area">
-
-                    {% if page.footer %}
-                        {{ page.footer }}
-                    {% endif %}
-
-                    </div>
-                    <!-- EOF: #subfooter-left -->
-                </div>
-            </div>
-        </div>
-        <!-- EOF: #subfooter-inside -->
-    
     </div>
+    <!-- EOF: #bottom-content -->
+  {% endif %}
+
+  {% if page.bottom_content %}
+    <!-- #bottom-content -->
+    <div id="bottom-content" class="clearfix">
+
+      <div class="container-fluid">
+        <div class="row">
+          {{ page.bottom_content }}
+        </div>
+      </div>
+
+    </div>
+    <!-- EOF: #bottom-content -->
+  {% endif %}
+
+  <div class="container-fluid">
+
+    <!-- #subfooter-inside -->
+    <div id="subfooter-inside" class="clearfix">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- #subfooter-left -->
+          <div class="subfooter-area">
+
+            {% if page.footer %}
+              {{ page.footer }}
+            {% endif %}
+
+          </div>
+          <!-- EOF: #subfooter-left -->
+        </div>
+      </div>
+    </div>
+    <!-- EOF: #subfooter-inside -->
+
+  </div>
 </footer>
 <!-- EOF:#subfooter -->

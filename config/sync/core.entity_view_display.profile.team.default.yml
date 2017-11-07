@@ -1,0 +1,60 @@
+uuid: 080f1f46-5a41-4476-adbc-3cb1e4ee0e27
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.field.profile.team.field_participants
+    - field.field.profile.team.field_team_class
+    - field.field.profile.team.field_team_name
+    - field.field.profile.team.field_team_number
+    - field.field.profile.team.field_team_status
+    - profile.type.team
+  module:
+    - entity_reference_revisions
+    - options
+id: profile.team.default
+targetEntityType: profile
+bundle: team
+mode: default
+content:
+  field_participants:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_team_class:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_team_name:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_team_number:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_team_status:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden: {  }

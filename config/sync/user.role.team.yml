@@ -1,0 +1,9 @@
+uuid: c1a44e90-ca40-4490-b6bf-d3f45d3defbc
+langcode: uk
+status: true
+dependencies: {  }
+id: team
+label: Team
+weight: 3
+is_admin: null
+permissions: {  }

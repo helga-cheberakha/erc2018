@@ -250,6 +250,60 @@
   padding-bottom: 0;
 }
 
+/*  Featured pages block  */
+#promoted #full-width-content .region-promoted {
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+}
+#promoted .block {
+  padding: 0;
+}
+#promoted .block-views-blockfeatured-pages-block-featured h2 {
+  margin: 1em 0;
+  font-size: 20px;
+  text-align: center;
+}
+#promoted .featured-pages-block .featured-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-evenly;
+  text-align: center;
+}
+#promoted .featured-pages-block .featured-list li {
+  margin: auto;
+  list-style: none;
+  padding: 1em;
+}
+#promoted .featured-pages-block .item-image img {
+  display: inline-block;
+  margin: 0;
+  -webkit-border-radius: 1000px;
+  -moz-border-radius: 1000px;
+  -ms-border-radius: 1000px;
+  border-radius: 1000px;
+  max-width: 100%;
+  height: auto;
+}
+
+.featured-pages-block .view-content a,
+.featured-pages-block .view-content a:hover {
+  color: #fff;
+}
+
+/* Second sidebar */
+#sidebar-second,
+#sidebar-second a,
+#sidebar-second a:hover {
+  color: #444;
+}
+
 @media all and (min-width: 461px) and (max-width: 900px) {
   #header-top .navigation.menu--main {
     float: right;

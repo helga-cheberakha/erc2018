@@ -1,0 +1,14 @@
+uuid: e38c5593-ce1f-42e7-b15b-8e65fb9b541c
+langcode: uk
+status: true
+dependencies:
+  module:
+    - user
+id: pathauto_user
+label: 'Pathauto: User'
+type: 'canonical_entities:user'
+pattern: '/team/[user:account-name]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }

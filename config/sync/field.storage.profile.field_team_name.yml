@@ -1,0 +1,21 @@
+uuid: d96f918f-93b4-4cf8-b033-4e1196fc0421
+langcode: uk
+status: true
+dependencies:
+  module:
+    - profile
+id: profile.field_team_name
+field_name: field_team_name
+entity_type: profile
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

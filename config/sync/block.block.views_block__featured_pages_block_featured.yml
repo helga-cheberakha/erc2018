@@ -11,16 +11,16 @@ dependencies:
     - erc2018
 id: views_block__featured_pages_block_featured
 theme: erc2018
-region: content
-weight: 0
+region: promoted
+weight: -8
 provider: null
 plugin: 'views_block:featured_pages-block_featured'
 settings:
   id: 'views_block:featured_pages-block_featured'
-  label: ''
+  label: 'Дотримуйтесь цих посилань, щоб дізнатись більше:'
   provider: views
-  label_display: '0'
-  views_label: ''
+  label_display: visible
+  views_label: 'Дотримуйтесь цих посилань, щоб дізнатись більше:'
   items_per_page: none
 visibility:
   request_path:

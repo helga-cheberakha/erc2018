@@ -1,0 +1,34 @@
+uuid: b3c53411-c34e-4519-bcb7-710979508e02
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_participants
+    - paragraphs.paragraphs_type.paragraph_participant
+    - profile.type.team
+  module:
+    - entity_reference_revisions
+id: profile.team.field_participants
+field_name: field_participants
+entity_type: profile
+bundle: team
+label: Учасники
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      paragraph_participant: paragraph_participant
+    target_bundles_drag_drop:
+      paragraph_participant:
+        enabled: true
+        weight: 3
+      paragraph_teaser_section:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

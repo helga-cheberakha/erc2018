@@ -1,0 +1,19 @@
+uuid: b3dde4c2-ae20-436e-a21e-258c83fd7389
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_participant_fname
+    - paragraphs.paragraphs_type.paragraph_participant
+id: paragraph.paragraph_participant.field_participant_fname
+field_name: field_participant_fname
+entity_type: paragraph
+bundle: paragraph_participant
+label: 'First name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

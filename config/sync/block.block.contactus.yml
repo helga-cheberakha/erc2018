@@ -12,7 +12,7 @@ dependencies:
 id: contactus
 theme: erc2018
 region: content
-weight: -5
+weight: -6
 provider: null
 plugin: 'block_content:b965cae8-8c96-4848-abaa-ed4f4cab20e1'
 settings:

@@ -1,0 +1,60 @@
+uuid: 61b174b2-e29b-4f75-b486-8dae453681d0
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.paragraph_participant.field_participant_birthday
+    - field.field.paragraph.paragraph_participant.field_participant_country
+    - field.field.paragraph.paragraph_participant.field_participant_fname
+    - field.field.paragraph.paragraph_participant.field_participant_gender
+    - field.field.paragraph.paragraph_participant.field_participant_lname
+    - paragraphs.paragraphs_type.paragraph_participant
+  module:
+    - address
+    - datetime
+    - options
+id: paragraph.paragraph_participant.default
+targetEntityType: paragraph
+bundle: paragraph_participant
+mode: default
+content:
+  field_participant_birthday:
+    weight: 3
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_participant_country:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_country_default
+    region: content
+  field_participant_fname:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_participant_gender:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_participant_lname:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

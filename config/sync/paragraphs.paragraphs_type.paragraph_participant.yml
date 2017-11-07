@@ -1,0 +1,9 @@
+uuid: 8acf851e-a3df-4c53-b801-8207a67e6c15
+langcode: uk
+status: true
+dependencies: {  }
+id: paragraph_participant
+label: Participant
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

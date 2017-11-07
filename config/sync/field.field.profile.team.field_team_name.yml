@@ -1,0 +1,19 @@
+uuid: 36d99f4c-075c-4f2d-809e-7e90f45fa109
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_team_name
+    - profile.type.team
+id: profile.team.field_team_name
+field_name: field_team_name
+entity_type: profile
+bundle: team
+label: 'Назва команди'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

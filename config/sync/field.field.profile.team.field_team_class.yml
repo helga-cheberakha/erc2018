@@ -1,0 +1,21 @@
+uuid: e5027038-c23e-49b8-a4b1-7a542f034eb5
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_team_class
+    - profile.type.team
+  module:
+    - options
+id: profile.team.field_team_class
+field_name: field_team_class
+entity_type: profile
+bundle: team
+label: Клас
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

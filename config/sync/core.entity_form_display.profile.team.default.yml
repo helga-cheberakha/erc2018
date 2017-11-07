@@ -1,0 +1,58 @@
+uuid: 0f1e2063-8bcb-4c55-b3a8-fd2b6da3052d
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.field.profile.team.field_participants
+    - field.field.profile.team.field_team_class
+    - field.field.profile.team.field_team_name
+    - field.field.profile.team.field_team_number
+    - field.field.profile.team.field_team_status
+    - profile.type.team
+  module:
+    - paragraphs
+id: profile.team.default
+targetEntityType: profile
+bundle: team
+mode: default
+content:
+  field_participants:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Participant
+      title_plural: Participants
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: paragraph_participant
+    third_party_settings: {  }
+    region: content
+  field_team_class:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_team_name:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_team_number:
+    weight: 4
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_team_status:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden: {  }

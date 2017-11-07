@@ -1,0 +1,30 @@
+uuid: d9181429-fb81-41fb-9f63-cc12fcb7d820
+langcode: uk
+status: true
+dependencies:
+  config:
+    - views.view.featured_pages
+  module:
+    - system
+    - views
+  theme:
+    - erc2018
+id: views_block__featured_pages_block_sidebar_featured
+theme: erc2018
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:featured_pages-block_sidebar_featured'
+settings:
+  id: 'views_block:featured_pages-block_sidebar_featured'
+  label: 'Корисні посилання'
+  provider: views
+  label_display: visible
+  views_label: 'Корисні посилання'
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: true
+    context_mapping: {  }

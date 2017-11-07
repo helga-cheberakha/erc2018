@@ -1,0 +1,21 @@
+uuid: 1d5bca6c-ce45-446f-868c-73e7c0e76054
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_participant_gender
+    - paragraphs.paragraphs_type.paragraph_participant
+  module:
+    - options
+id: paragraph.paragraph_participant.field_participant_gender
+field_name: field_participant_gender
+entity_type: paragraph
+bundle: paragraph_participant
+label: Gender
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

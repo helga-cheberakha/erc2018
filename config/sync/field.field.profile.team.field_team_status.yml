@@ -1,0 +1,23 @@
+uuid: 37ebe27f-7e1f-45e3-a880-c7604d4f67e8
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.profile.field_team_status
+    - profile.type.team
+  module:
+    - options
+id: profile.team.field_team_status
+field_name: field_team_status
+entity_type: profile
+bundle: team
+label: 'Team status'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: waiting
+default_value_callback: ''
+settings: {  }
+field_type: list_string

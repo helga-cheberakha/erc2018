@@ -1,0 +1,30 @@
+uuid: ec1fab8a-1bfa-4967-a4f0-81e74bc2ec22
+langcode: uk
+status: true
+dependencies:
+  module:
+    - options
+    - profile
+id: profile.field_team_status
+field_name: field_team_status
+entity_type: profile
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: waiting
+      label: 'In waiting list'
+    -
+      value: process
+      label: 'In process'
+    -
+      value: confirmed
+      label: 'Confirmed, payment received'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

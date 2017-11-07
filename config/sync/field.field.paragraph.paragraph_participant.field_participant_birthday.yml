@@ -1,0 +1,21 @@
+uuid: e1e1bb0e-9681-48c0-9ac1-8e74efead337
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_participant_birthday
+    - paragraphs.paragraphs_type.paragraph_participant
+  module:
+    - datetime
+id: paragraph.paragraph_participant.field_participant_birthday
+field_name: field_participant_birthday
+entity_type: paragraph
+bundle: paragraph_participant
+label: 'Date of Birth'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

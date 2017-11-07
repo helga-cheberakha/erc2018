@@ -1,0 +1,19 @@
+uuid: 6d8b6e39-2845-4562-804a-084b9dfeca12
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_participant_lname
+    - paragraphs.paragraphs_type.paragraph_participant
+id: paragraph.paragraph_participant.field_participant_lname
+field_name: field_participant_lname
+entity_type: paragraph
+bundle: paragraph_participant
+label: 'Last name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
