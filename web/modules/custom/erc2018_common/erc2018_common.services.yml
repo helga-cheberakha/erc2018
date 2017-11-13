@@ -1,0 +1,5 @@
+services:
+  erc2018_common.route_subscriber:
+    class: Drupal\erc2018_common\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

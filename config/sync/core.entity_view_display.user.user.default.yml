@@ -16,4 +16,5 @@ content: {  }
 hidden:
   langcode: true
   member_for: true
+  profile_team: true
   user_picture: true

@@ -3,7 +3,7 @@ langcode: uk
 status: true
 dependencies: {  }
 id: team
-label: Team
+label: Команда
 weight: 3
 is_admin: null
 permissions: {  }

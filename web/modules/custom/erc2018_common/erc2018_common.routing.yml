@@ -1,0 +1,7 @@
+erc2018_common.register:
+  path: '/team-register'
+  defaults:
+    _title: 'Create new team'
+    _controller: '\Drupal\erc2018_common\Controller\TeamRegistrationController::teamRegister'
+  requirements:
+    _access: 'TRUE'

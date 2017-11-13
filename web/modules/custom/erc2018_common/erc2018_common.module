@@ -18,23 +18,30 @@ function erc2018_common_language_switch_links_alter(array &$links, $type, \Drupa
 }
 
 /**
+ * Implements hook_entity_build().
+ */
+function erc2018_common_entity_type_build(array &$entity_types) {
+  $entity_types['user']->setFormClass('erc2018_common_team_register', 'Drupal\erc2018_common\Form\TeamRegistrationForm');
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function erc2018_common_form_user_register_form_alter(&$form, FormStateInterface $form_state) {
   // Hide user account name.
   // It will be set up automatically.
   if (isset($form['account']['name'])) {
-    $form['account']['name']['#access'] = FALSE;
+    //$form['account']['name']['#access'] = FALSE;
   }
 
   // Set value of the user status to "Blocked" by default.
   if (isset($form['account']['status'])) {
-    $form['account']['status']['#default_value'] = 0;
+    //$form['account']['status']['#default_value'] = 0;
   }
 
   // Hide 'notify' as unnecessary.
   if (isset($form['account']['notify'])) {
-    $form['account']['notify']['#access'] = FALSE;
+    //$form['account']['notify']['#access'] = FALSE;
   }
 
   // Override value for submit btn.
