@@ -40,6 +40,7 @@
         "drupal/pathauto": "^1.0",
         "drupal/profile": "^1.0@RC",
         "drupal/rules": "^3.0@alpha",
+        "drupal/shield": "^1.1",
         "drupal/simple_gmap": "^1.4",
         "drupal/superfish": "^1.1",
         "drupal/tagadelic": "^3.0@alpha",

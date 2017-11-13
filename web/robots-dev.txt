@@ -1,0 +1,6 @@
+#
+# robots.txt for dev environment
+#
+
+User-agent: *
+Disallow: /

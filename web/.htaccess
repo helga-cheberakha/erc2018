@@ -154,6 +154,11 @@ AddEncoding gzip svgz
   # Specifically, disallow autoload.php from being served directly.
   RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
 
+  # Dev environments other robots.txt to prevent indexing.
+  RewriteCond %{HTTP_HOST} (.*)erc2018\.com
+  RewriteCond %{REQUEST_URI} (robots\.txt)
+  RewriteRule .* robots-dev.txt [L]
+
   # Rules to correctly serve gzip compressed CSS and JS files.
   # Requires both mod_rewrite and mod_headers to be enabled.
   <IfModule mod_headers.c>
