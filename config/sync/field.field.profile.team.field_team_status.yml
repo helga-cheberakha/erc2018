@@ -11,7 +11,7 @@ id: profile.team.field_team_status
 field_name: field_team_status
 entity_type: profile
 bundle: team
-label: 'Team status'
+label: Статус
 description: ''
 required: true
 translatable: false

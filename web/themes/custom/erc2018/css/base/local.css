@@ -263,7 +263,8 @@
   font-size: 20px;
   text-align: center;
 }
-#promoted .featured-pages-block .featured-list {
+#promoted .featured-pages-block .featured-list,
+#subfooter #full-width-content .featured-pages-block .featured-list {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -276,12 +277,14 @@
   justify-content: space-evenly;
   text-align: center;
 }
-#promoted .featured-pages-block .featured-list li {
+#promoted .featured-pages-block .featured-list li,
+#subfooter #full-width-content .featured-pages-block .featured-list li {
   margin: auto;
   list-style: none;
   padding: 1em;
 }
-#promoted .featured-pages-block .item-image img {
+#promoted .featured-pages-block .item-image img,
+#subfooter #full-width-content .featured-pages-block .featured-list img {
   display: inline-block;
   margin: 0;
   -webkit-border-radius: 1000px;
@@ -304,11 +307,116 @@
   color: #444;
 }
 
+/* Registration form */
+.user-erc2018-common-team-register-form label,
+.user-erc2018-common-team-register-form .label,
+.user-erc2018-common-team-register-form .fieldset-legend{
+  color: #444;
+  clear: both;
+  font-size: 16px;
+}
+.user-erc2018-common-team-register-form #edit-entity-team .tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table {
+  color: #444;
+  border: none;
+  padding-top: 2em;
+}
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table thead th {
+  padding: 0 0 0.5em;
+  border: none;
+  border-bottom: 4px solid #444;
+}
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table thead th .label {
+  padding: 0;
+}
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table tbody .field-multiple-drag,
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table tbody .delta-order {
+  display: none;
+}
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform {
+  overflow: hidden;
+  width: 100%;
+}
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-birthday {
+  clear: both;
+}
+.user-erc2018-common-team-register-form #edit-entity-team .field--name-field-participants .fieldset-wrapper .container-inline .form-item,
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-fname,
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-lname,
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-country,
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-gender {
+  margin-bottom: 1em;
+}
+.user-erc2018-common-team-register-form .form-actions {
+  overflow: hidden;
+  width: 100%;
+  clear: both;
+}
+.user-erc2018-common-team-register-form .form-actions input {
+  background-color: #E74C3C;
+}
+.user-erc2018-common-team-register-form .form-actions input:hover {
+  background-color: #444;
+}
+
 @media all and (min-width: 461px) and (max-width: 900px) {
   #header-top .navigation.menu--main {
     float: right;
     clear: none;
     margin: 0;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team {
+    overflow: hidden;
+    width: 100%;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-team-name {
+    float: left;
+    width: 69%;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-team-class {
+    float: right;
+    width: 28%;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-participants {
+    clear: both;
+    width: 100%;
+    overflow: hidden;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-participants .fieldset-wrapper .container-inline {
+    width: 100%;
+    overflow: hidden;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-participants .fieldset-wrapper .container-inline .form-item {
+    float: left;
+    width: 20%;
+    margin: 0 2em 0 0;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-fname {
+    float: left;
+    width: 49%;
+    margin-bottom: 1em;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-lname {
+    float: right;
+    width: 49%;
+    margin-bottom: 1em;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-country {
+    float: left;
+    width: 49%;
+    clear: both;
+    margin-bottom: 1em;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-gender {
+    float: right;
+    width: 49%;
+    margin-bottom: 1em;
+  }
+  .user-erc2018-common-team-register-form .form-actions input {
+    float: right;
+    background-color: #E74C3C;
   }
 }
 
@@ -334,5 +442,56 @@
     width: 60%;
     padding-left: 40px;
     margin-right: 60px;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team {
+    overflow: hidden;
+    width: 100%;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-team-name {
+    float: left;
+    width: 69%;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-team-class {
+    float: right;
+    width: 28%;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-participants {
+    clear: both;
+    width: 100%;
+    overflow: hidden;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-participants .fieldset-wrapper .container-inline {
+    width: 100%;
+    overflow: hidden;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-participants .fieldset-wrapper .container-inline .form-item {
+    float: left;
+    width: 20%;
+    margin: 0 2em 0 0;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-fname {
+    float: left;
+    width: 49%;
+    margin-bottom: 1em;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-lname {
+    float: right;
+    width: 49%;
+    margin-bottom: 1em;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-country {
+    float: left;
+    width: 49%;
+    clear: both;
+    margin-bottom: 1em;
+  }
+  .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-gender {
+    float: right;
+    width: 49%;
+    margin-bottom: 1em;
+  }
+  .user-erc2018-common-team-register-form .form-actions input {
+    float: right;
+    background-color: #E74C3C;
   }
 }

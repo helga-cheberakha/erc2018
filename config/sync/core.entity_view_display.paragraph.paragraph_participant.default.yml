@@ -19,8 +19,8 @@ bundle: paragraph_participant
 mode: default
 content:
   field_participant_birthday:
-    weight: 3
-    label: above
+    weight: 4
+    label: inline
     settings:
       format_type: medium
       timezone_override: ''
@@ -28,30 +28,30 @@ content:
     type: datetime_default
     region: content
   field_participant_country:
-    weight: 4
-    label: above
+    weight: 0
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: address_country_default
     region: content
   field_participant_fname:
-    weight: 0
-    label: above
+    weight: 1
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
   field_participant_gender:
-    weight: 2
-    label: above
+    weight: 3
+    label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_participant_lname:
-    weight: 1
-    label: above
+    weight: 2
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }

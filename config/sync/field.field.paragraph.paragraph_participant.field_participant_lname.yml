@@ -9,7 +9,7 @@ id: paragraph.paragraph_participant.field_participant_lname
 field_name: field_participant_lname
 entity_type: paragraph
 bundle: paragraph_participant
-label: 'Last name'
+label: Прізвище
 description: ''
 required: true
 translatable: false

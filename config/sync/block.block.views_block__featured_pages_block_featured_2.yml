@@ -1,0 +1,30 @@
+uuid: 17a2ffad-1de1-4622-8b32-191128c2019d
+langcode: uk
+status: true
+dependencies:
+  config:
+    - views.view.featured_pages
+  module:
+    - system
+    - views
+  theme:
+    - erc2018
+id: views_block__featured_pages_block_featured_2
+theme: erc2018
+region: full_width_content
+weight: 0
+provider: null
+plugin: 'views_block:featured_pages-block_featured'
+settings:
+  id: 'views_block:featured_pages-block_featured'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: "/team-register\r\n/user\r\n/user/*"
+    negate: false
+    context_mapping: {  }

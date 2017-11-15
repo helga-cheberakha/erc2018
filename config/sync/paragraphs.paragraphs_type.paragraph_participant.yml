@@ -3,7 +3,7 @@ langcode: uk
 status: true
 dependencies: {  }
 id: paragraph_participant
-label: Participant
+label: Учасник
 icon_uuid: null
 description: ''
 behavior_plugins: {  }

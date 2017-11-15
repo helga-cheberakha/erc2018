@@ -11,7 +11,7 @@ id: paragraph.paragraph_participant.field_participant_country
 field_name: field_participant_country
 entity_type: paragraph
 bundle: paragraph_participant
-label: Country
+label: Країна
 description: ''
 required: true
 translatable: false

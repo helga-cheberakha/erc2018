@@ -1,0 +1,22 @@
+uuid: 53214dfc-d264-493d-bb93-1263c42a4e9e
+langcode: uk
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.paragraph_participant
+id: paragraph.paragraph_participant.status
+field_name: status
+entity_type: paragraph
+bundle: paragraph_participant
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

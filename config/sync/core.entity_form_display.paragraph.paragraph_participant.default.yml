@@ -20,9 +20,9 @@ content:
   field_participant_birthday:
     weight: 4
     settings:
-      increment: 15
       date_order: YMD
-      time_type: '24'
+      time_type: none
+      increment: 15
     third_party_settings: {  }
     type: datetime_datelist
     region: content

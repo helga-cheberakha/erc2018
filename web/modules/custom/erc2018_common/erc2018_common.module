@@ -6,6 +6,9 @@
  */
 
 use \Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\profile\Entity\Profile;
+use Drupal\profile\Entity\ProfileType;
 
 /**
  * Implements hook_language_switch_links_alter().
@@ -26,27 +29,168 @@ function erc2018_common_entity_type_build(array &$entity_types) {
 
 /**
  * Implements hook_form_FORM_ID_alter().
+ *
+ * Add team profile forms to the team registration form.
  */
-function erc2018_common_form_user_register_form_alter(&$form, FormStateInterface $form_state) {
-  // Hide user account name.
-  // It will be set up automatically.
-  if (isset($form['account']['name'])) {
-    //$form['account']['name']['#access'] = FALSE;
+function erc2018_common_form_user_erc2018_common_team_register_form_alter(&$form, FormStateInterface $form_state) {
+  $weight = 90;
+  $profile_type = ProfileType::load('team');
+  $property = ['profiles', $profile_type->id()];
+  $profile = $form_state->get($property);
+
+  if (empty($profile)) {
+    $profile = Profile::create([
+      'type' => $profile_type->id(),
+      'langcode' => $profile_type->language() ? $profile_type->language() : \Drupal::languageManager()->getDefaultLanguage()->getId(),
+    ]);
+
+    // Attach profile entity form.
+    $form_state->set($property, $profile);
+  }
+  $form_state->set('form_display_' . $profile_type->id(), EntityFormDisplay::collectRenderDisplay($profile, 'default'));
+  $form['entity_' . $profile_type->id()] = [
+    '#type' => 'container',
+    '#tree' => TRUE,
+    '#parents' => ['entity_' . $profile_type->id()],
+    '#weight' => ++$weight,
+  ];
+
+  $form_state
+    ->get('form_display_' . $profile_type->id())
+    ->buildForm($profile, $form['entity_' . $profile_type->id()], $form_state);
+
+  // Non-access fields.
+  $non_access = ['field_team_number', 'field_team_status'];
+  foreach ($non_access as $field_name) {
+    if (isset($form['entity_team'][$field_name])) {
+      $form['entity_team'][$field_name]['#access'] = FALSE;
+    }
   }
 
-  // Set value of the user status to "Blocked" by default.
-  if (isset($form['account']['status'])) {
-    //$form['account']['status']['#default_value'] = 0;
+  // Custom validation and submission handlers.
+  $form['actions']['submit']['#validate'][] = 'erc2018_common_form_user_erc2018_common_team_register_form_validate';
+  $form['actions']['submit']['#submit'][] = 'erc2018_common_form_user_erc2018_common_team_register_form_submit';
+}
+
+/**
+ * Extra form validation handler for the user registration form.
+ */
+function erc2018_common_form_user_erc2018_common_team_register_form_validate(array &$form, FormStateInterface $form_state) {
+  $profiles = $form_state->get('profiles');
+  if (!empty($profiles)) {
+    foreach ($profiles as $bundle => $entity) {
+      /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface $form_display */
+      $form_display = $form_state->get('form_display_' . $bundle);
+      if (isset($form['entity_' . $bundle])) {
+        $form_display->extractFormValues($entity, $form['entity_' . $bundle], $form_state);
+        $form_display->validateFormValues($entity, $form['entity_' . $bundle], $form_state);
+      }
+
+      if ($bundle == 'team') {
+        $values = $form_state->getValues();
+        // The team should have two participants at least.
+        if (isset($values['entity_team']['field_participants']) && count($values['entity_team']['field_participants']) <= 2) {
+          $form_state->setErrorByName('field_participants', t('Please add second participant. The team should have two participants at least.'));
+        }
+      }
+    }
+  }
+  // Entity was validated in entityFormValidate(). This will prevent validation
+  // exception from being thrown.
+  $form_state->getFormObject()->validateForm($form, $form_state);
+}
+
+/**
+ * Extra form submission handler for the user registration form.
+ */
+function erc2018_common_form_user_erc2018_common_team_register_form_submit(array &$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Session\AccountInterface $account */
+  $account = $form_state->getFormObject()->getEntity();
+  $profiles = $form_state->get('profiles');
+
+  if (!empty($profiles)) {
+    foreach ($profiles as $bundle => $entity) {
+      // Create team number automatically.
+      if ($bundle == 'team') {
+        $team_number = 0;
+        if ($team_class = $profiles['team']->get('field_team_class')->value) {
+          // Gets all users for the given team class.
+          $query = \Drupal::database()->select('profile__field_team_number', 'ptn');
+          $query->fields('ptn', ['entity_id', 'field_team_number_value']);
+          $query->join('profile__field_team_class', 'ptc', 'ptc.entity_id = ptn.entity_id');
+          $query->condition('ptc.field_team_class_value', $team_class);
+          $users = $query->execute()->fetchAllKeyed();
+
+          if ($users) {
+            $team_number = current($users) + 1;
+          }
+          else {
+            $numbers = erc2018_common_get_teams_numbers();
+            $team_number = $numbers[$team_class];
+          }
+          // Username.
+          $username = $team_class . $team_number;
+        }
+
+        // Set up team number.
+        $entity->set('field_team_number', $team_number);
+        // Set up username based on team class and team number.
+        $account->set('name', $username);
+        $account->save();
+      }
+
+      $entity->setOwnerId($account->id());
+      $entity->setActive(TRUE);
+      $entity->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function erc2018_common_element_info_alter(array &$types) {
+  $types['datelist']['#process'][] = 'erc2018_common_datelist_set_format';
+}
+
+/**
+ * Element process callback for datetime fields.
+ */
+function erc2018_common_datelist_set_format($element) {
+  // Limit year range.
+  $element['#date_year_range'] = '1918:2008';
+  if (isset($element['year']['#options'])) {
+    foreach ($element['year']['#options'] as $key => $option) {
+      if ($key > 2008 || $key < 1918) {
+        unset($element['year']['#options'][$key]);
+      }
+    }
   }
 
-  // Hide 'notify' as unnecessary.
-  if (isset($form['account']['notify'])) {
-    //$form['account']['notify']['#access'] = FALSE;
-  }
+  return $element;
+}
 
-  // Override value for submit btn.
-  if (isset($form['actions']['submit'])) {
-    $btn_value = t('Register new team');
-    //$form['actions']['submit']['#value'];
-  }
+/**
+ * Helper function - teams numbers.
+ *
+ * @return array
+ */
+function erc2018_common_get_teams_numbers() {
+  return [
+    'my' => 1,
+    'wy' => 200,
+    'xy' => 400,
+    'mo' => 600,
+    'wo' => 800,
+    'xo' => 1000,
+    'mv' => 1200,
+    'wv' => 1400,
+    'xv' => 1600,
+    'msv' => 1800,
+    'wsv' => 2000,
+    'xsv'=> 2200,
+    'muv' => 2400,
+    'wuv' => 2600,
+    'xuv' => 2800,
+  ];
 }

@@ -22,6 +22,14 @@ class RouteSubscriber extends RouteSubscriberBase {
     if ($route = $collection->get('user.register')) {
       $route->setRequirement('_access', 'FALSE');
     }
+
+    // Set "team" edit page as admin.
+    if ($route = $collection->get('entity.profile.type.user_profile_form')) {
+      $route->setOption('_admin_route', TRUE);
+    }
+    if ($route = $collection->get('entity.profile.type.user_profile_form.add')) {
+      $route->setOption('_admin_route', TRUE);
+    }
   }
 
 }

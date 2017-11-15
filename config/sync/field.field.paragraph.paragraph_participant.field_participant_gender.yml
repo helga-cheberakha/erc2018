@@ -11,7 +11,7 @@ id: paragraph.paragraph_participant.field_participant_gender
 field_name: field_participant_gender
 entity_type: paragraph
 bundle: paragraph_participant
-label: Gender
+label: Стать
 description: ''
 required: true
 translatable: false

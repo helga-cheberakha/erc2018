@@ -1,0 +1,30 @@
+uuid: 23083855-4dcd-4ef0-8fc3-c4ac30356afb
+langcode: uk
+status: true
+dependencies:
+  config:
+    - views.view.teams
+  module:
+    - system
+    - views
+  theme:
+    - erc2018
+id: views_block__teams_block_teams
+theme: erc2018
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:teams-block_teams'
+settings:
+  id: 'views_block:teams-block_teams'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /teams
+    negate: false
+    context_mapping: {  }

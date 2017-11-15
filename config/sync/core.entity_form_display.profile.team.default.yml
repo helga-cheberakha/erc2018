@@ -18,7 +18,7 @@ mode: default
 content:
   field_participants:
     type: entity_reference_paragraphs
-    weight: 2
+    weight: 3
     settings:
       title: Participant
       title_plural: Participants
@@ -29,7 +29,7 @@ content:
     third_party_settings: {  }
     region: content
   field_team_class:
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -43,16 +43,16 @@ content:
     type: string_textfield
     region: content
   field_team_number:
-    weight: 4
+    type: number
+    weight: 1
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   field_team_status:
-    weight: 3
+    type: options_buttons
+    weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
 hidden: {  }

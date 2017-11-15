@@ -9,7 +9,7 @@ id: paragraph.paragraph_participant.field_participant_fname
 field_name: field_participant_fname
 entity_type: paragraph
 bundle: paragraph_participant
-label: 'First name'
+label: 'Ім''я'
 description: ''
 required: true
 translatable: false

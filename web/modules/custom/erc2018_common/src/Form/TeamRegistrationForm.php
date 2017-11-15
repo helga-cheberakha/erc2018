@@ -8,10 +8,6 @@ namespace Drupal\erc2018_common\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\RegisterForm;
-use Drupal\profile\Entity\Profile;
-use Drupal\profile\Entity\ProfileType;
-use Drupal\Core\Entity\Entity\EntityFormDisplay;
-
 
 /**
  * Provides a team register form.
@@ -21,31 +17,20 @@ class TeamRegistrationForm extends RegisterForm {
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
 
-    // Adds team profile form.
-    $profile_type = ProfileType::load('team');
-    $property = ['profiles', $profile_type->id()];
-    $profile = $form_state->get($property);
-    if (empty($profile)) {
-      $profile = Profile::create([
-        'type' => $profile_type->id(),
-        'langcode' => $profile_type->language() ? $profile_type->language() : \Drupal::languageManager()->getDefaultLanguage()->getId(),
-      ]);
-
-      // Attach profile entity form.
-      $form_state->set($property, $profile);
+    // Customize form.
+    // Hide description for email field.
+    if (isset($form['account']['mail'])) {
+      $form['account']['mail']['#description'] = '';
     }
-    $form_state->set('form_display_' . $profile_type->id(), EntityFormDisplay::collectRenderDisplay($profile, 'default'));
-    $form['entity_' . $profile_type->id()] = [
-      '#type' => 'details',
-      '#title' => $profile_type->label(),
-      '#tree' => TRUE,
-      '#parents' => ['entity_' . $profile_type->id()],
-      '#open' => TRUE,
-    ];
 
-    $form_state
-      ->get('form_display_' . $profile_type->id())
-      ->buildForm($profile, $form['entity_' . $profile_type->id()], $form_state);
+    // Non-access fields.
+    // Hide username field. It will be created automatically.
+    $non_access = ['name', 'pass', 'status', 'roles', 'notify'];
+    foreach ($non_access as $field_name) {
+      if (isset($form['account'][$field_name])) {
+        $form['account'][$field_name]['#access'] = FALSE;
+      }
+    }
 
     return $form;
   }
@@ -59,4 +44,47 @@ class TeamRegistrationForm extends RegisterForm {
     return $element;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $values = $form_state->getValues();
+
+    // Field "username" can't be empty.
+    // Create username automatically based on team class.
+    if (!$values['name']) {
+      $random_number = intval(rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9));
+      $username = strstr($values['mail'], '@', true) . $random_number;
+      // Set up username.
+      $form_state->setValue('name', $username);
+    }
+
+    // Add role "Team".
+    $roles = $values['roles'];
+    if (isset($roles['team'])) {
+      $roles['team'] = TRUE;
+    }
+    $form_state->setValue('roles', $roles);
+
+    parent::validateForm($form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function save(array $form, FormStateInterface $form_state) {
+    $account = $this->entity;
+
+    // Save has no return value so this cannot be tested.
+    // Assume save has gone through correctly.
+    $account->save();
+
+    $form_state->set('user', $account);
+    $form_state->setValue('uid', $account->id());
+
+    $this->logger('user')->notice('New user: %name %email.', ['%name' => $form_state->getValue('name'), '%email' => '<' . $form_state->getValue('mail') . '>', 'type' => $account->link($this->t('Edit'), 'edit-form')]);
+
+    drupal_set_message($this->t('Team has been created.'));
+    $form_state->setRedirect('<front>');
+  }
 }

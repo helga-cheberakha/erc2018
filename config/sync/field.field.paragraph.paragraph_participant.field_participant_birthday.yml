@@ -11,7 +11,7 @@ id: paragraph.paragraph_participant.field_participant_birthday
 field_name: field_participant_birthday
 entity_type: paragraph
 bundle: paragraph_participant
-label: 'Date of Birth'
+label: 'Дата народження'
 description: ''
 required: true
 translatable: false

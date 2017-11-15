@@ -9,7 +9,7 @@ id: profile.team.field_team_number
 field_name: field_team_number
 entity_type: profile
 bundle: team
-label: 'Team number'
+label: 'Номер команди'
 description: ''
 required: true
 translatable: false
