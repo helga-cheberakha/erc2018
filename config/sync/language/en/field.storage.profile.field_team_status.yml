@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'In waiting list'
+    -
+      label: 'In process'
+    -
+      label: 'Confirmed, payment received'

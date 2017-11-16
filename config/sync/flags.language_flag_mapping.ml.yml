@@ -1,0 +1,9 @@
+uuid: d36ffa5c-3793-4db8-884a-7191f84a7cf7
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: TBO_3RyNaid8IVzeDRAFFBFk-WrI1reQVPFQIX-fOpU
+source: ml
+info: null
+flag: in

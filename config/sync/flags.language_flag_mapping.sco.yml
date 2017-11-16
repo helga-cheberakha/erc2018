@@ -1,0 +1,9 @@
+uuid: 28d3c358-190a-4ee8-9e61-d21a6bed0f08
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Ud_WUIxBU808AUV2UPRHKDfx3DSVrdkRIYjFPuxi95k
+source: sco
+info: null
+flag: gb-sct

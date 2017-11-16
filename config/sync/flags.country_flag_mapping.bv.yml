@@ -1,0 +1,8 @@
+uuid: 1d1c1ed5-3abd-48f0-a0c1-09e2f3a6db9e
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: RD3WkVBDe3PKHUn_2yhplYOCTFxQzRY9GarfkS2xayU
+source: bv
+flag: 'no'

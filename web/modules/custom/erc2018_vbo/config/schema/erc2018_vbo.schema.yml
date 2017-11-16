@@ -1,0 +1,4 @@
+# Schema for the configuration files.
+action.configuration.team_status_change:
+  type: action_configuration_default
+  label: 'Change status of the team'

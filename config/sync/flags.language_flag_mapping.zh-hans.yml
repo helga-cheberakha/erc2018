@@ -1,0 +1,9 @@
+uuid: 0d9a1d93-f3d7-40fc-9c7b-0b2397198f4b
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: on2EE22EVKzx54WoC0CgSp19bKalQBZ_gbw_Tq4VtgM
+source: zh-hans
+info: null
+flag: cn

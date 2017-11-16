@@ -1,0 +1,9 @@
+uuid: 20d9ea68-b9f5-4af8-ae98-6484988f806e
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: YhdAcvOSq91MxTqBKiu2uIHUBlENbFPjcv7dec1p4uQ
+source: dz
+info: null
+flag: bt

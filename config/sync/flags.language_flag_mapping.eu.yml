@@ -1,0 +1,9 @@
+uuid: 3a2e64d5-ffc3-4480-ae7e-d54d2ec49e95
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: LGpbrS0ukCM1zHcVncI8koCZB7vMxqRVGxBQOqw4OvU
+source: eu
+info: null
+flag: eus

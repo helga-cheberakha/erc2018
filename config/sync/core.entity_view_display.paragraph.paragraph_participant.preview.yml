@@ -5,25 +5,15 @@ dependencies:
   config:
     - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.paragraph_participant.field_participant_birthday
-    - field.field.paragraph.paragraph_participant.field_participant_country
     - field.field.paragraph.paragraph_participant.field_participant_fname
     - field.field.paragraph.paragraph_participant.field_participant_gender
     - field.field.paragraph.paragraph_participant.field_participant_lname
     - paragraphs.paragraphs_type.paragraph_participant
-  module:
-    - address
 id: paragraph.paragraph_participant.preview
 targetEntityType: paragraph
 bundle: paragraph_participant
 mode: preview
 content:
-  field_participant_country:
-    weight: 0
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: address_country_default
-    region: content
   field_participant_fname:
     weight: 1
     label: hidden

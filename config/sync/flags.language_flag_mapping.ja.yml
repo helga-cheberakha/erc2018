@@ -1,0 +1,9 @@
+uuid: 273c3fbd-a247-4363-a15f-16a402cf570f
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-AZ4YgDOn5M0v5-neJily-nEoW6a9hVoZapcbNPI_y8'
+source: ja
+info: null
+flag: jp

@@ -1,0 +1,9 @@
+uuid: c0c5211b-8024-41ae-9376-57e900926222
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: DQaYwlV_rOkYJ4GUiioVVub6g-eIXMskm9iTdMR49gk
+source: eo
+info: null
+flag: epo

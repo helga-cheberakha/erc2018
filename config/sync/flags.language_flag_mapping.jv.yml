@@ -1,0 +1,9 @@
+uuid: 523c7500-f80d-4e5a-b9ce-cb86cf37f38c
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 2CvGJ-LbvYmiTQG9HMXRbId7J1tKljNO45wPbV3UpyA
+source: jv
+info: null
+flag: id

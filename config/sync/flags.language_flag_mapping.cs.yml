@@ -1,0 +1,9 @@
+uuid: a10d769e-f7f1-4c9b-a1c0-7374e871acdc
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-siVc-HG40huydpapfGbW1Yd8GUImUZ-pBSy1hm2eII'
+source: cs
+info: null
+flag: cz

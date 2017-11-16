@@ -1,0 +1,8 @@
+uuid: 01198116-4507-40db-9817-179f7e12f3e4
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vh0B-Yy510msLF-iKCak1GoL46wTqf1j8P0kJB4Sg4g
+source: cp
+flag: fr

@@ -1,0 +1,13 @@
+uuid: 1e45e9e6-84f0-4cc5-a4d9-5ed2b7cbcfb6
+langcode: uk
+status: true
+dependencies:
+  module:
+    - erc2018_vbo
+_core:
+  default_config_hash: 37z_v8JSnHISbVH1-AjeBrCgQC-tpguoYxwTeNt71mI
+id: team_status_change
+label: 'Change status of the team'
+type: profile
+plugin: team_status_change
+configuration: {  }

@@ -1,0 +1,8 @@
+uuid: 1852f13a-035c-40d9-b85f-5005cb4bda78
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: BeSu7my_Aqw83glZmcMVrXQEj6jf5VQyNfVKU4OM8zo
+source: re
+flag: fr

@@ -1,0 +1,9 @@
+uuid: 0237887c-e9b2-4dbe-9e16-1d31e51624c8
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: pIEHXteXd9k7f6iI98GDGj-h2AkIfyhqGaeDgR9l9n0
+source: zh-hant
+info: null
+flag: tw

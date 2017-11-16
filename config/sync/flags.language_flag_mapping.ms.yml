@@ -1,0 +1,9 @@
+uuid: 114df6cf-1427-4023-982a-51f772113cb9
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-1yoN-vTkq1wpwK0AZu_v4GiBYeDAMBcg6CNW5cSnoc'
+source: ms
+info: null
+flag: my

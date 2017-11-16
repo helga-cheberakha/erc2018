@@ -1,0 +1,9 @@
+uuid: 66b01364-d156-4740-960e-b0ed9d9fdd73
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 4FcOKjvDcv81cWp4PX3zjVQqN5KHQicl7TYEY9klgHY
+source: et
+info: null
+flag: ee

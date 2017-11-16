@@ -10,7 +10,7 @@ dependencies:
     - field.field.paragraph.paragraph_participant.field_participant_lname
     - paragraphs.paragraphs_type.paragraph_participant
   module:
-    - address
+    - country
     - datetime
 id: paragraph.paragraph_participant.default
 targetEntityType: paragraph
@@ -30,7 +30,7 @@ content:
     weight: 2
     settings: {  }
     third_party_settings: {  }
-    type: address_country_default
+    type: country_default
     region: content
   field_participant_fname:
     weight: 0

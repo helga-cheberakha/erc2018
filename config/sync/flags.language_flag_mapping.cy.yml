@@ -1,0 +1,9 @@
+uuid: 348e593e-7382-4356-bebc-ce51ad3582ed
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 2jEciTYAbYShMJJREOs2UeCl8nXyd2avLL49J6A0URY
+source: cy
+info: null
+flag: gb-wls

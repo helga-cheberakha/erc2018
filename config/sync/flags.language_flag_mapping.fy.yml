@@ -1,0 +1,9 @@
+uuid: b7270cb3-7cf1-4c8d-a8aa-644696609782
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: PRS5szDjaGC9WY60UNPxVMA40CyXnqAUWuvgX9J6kns
+source: fy
+info: null
+flag: nl-fy

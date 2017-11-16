@@ -1,0 +1,9 @@
+uuid: 72421bfd-12e6-4b29-9107-c13f3d247960
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: M-7GPoHnmiyaJInt5cBUxt3TKPJ0bzD6lWtgjrbeNPI
+source: gd
+info: null
+flag: gb-sct

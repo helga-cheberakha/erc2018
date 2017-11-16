@@ -361,6 +361,11 @@
   background-color: #444;
 }
 
+/* Team listing */
+.block-views-blockteams-block-teams {
+  padding: 0 1em 2em;
+}
+
 @media all and (min-width: 461px) and (max-width: 900px) {
   #header-top .navigation.menu--main {
     float: right;

@@ -1,0 +1,8 @@
+uuid: d3949296-50e7-437a-a4f1-702cbb96c63a
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9G5RU7cyEYT51uuQqI6ZHUay1ZpK0Lh7huSDblcxcYc
+source: ea
+flag: es

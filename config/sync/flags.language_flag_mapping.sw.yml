@@ -1,0 +1,9 @@
+uuid: 8542da42-44ae-41d8-ac35-b47ed35131a1
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-FjidA4HS2DRsTENJjlVVnsTIySLyU_8es_tXwcUw88'
+source: sw
+info: null
+flag: tz

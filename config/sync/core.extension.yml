@@ -1,4 +1,5 @@
 module:
+  action: 0
   address: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
@@ -12,6 +13,7 @@ module:
   bricks: 0
   bricks_default: 0
   bricks_inline: 0
+  bulk_update_fields: 0
   ckeditor: 0
   color: 0
   comment: 0
@@ -20,6 +22,8 @@ module:
   contact: 0
   contact_storage: 0
   contextual: 0
+  country: 0
+  csv_serialization: 0
   ctools: 0
   datetime: 0
   dblog: 0
@@ -30,11 +34,15 @@ module:
   entity: 0
   entity_reference_revisions: 0
   erc2018_common: 0
+  erc2018_vbo: 0
   field: 0
   field_group: 0
   field_ui: 0
   file: 0
   filter: 0
+  flags: 0
+  flags_country: 0
+  flags_ui: 0
   geolocation: 0
   help: 0
   history: 0
@@ -53,8 +61,11 @@ module:
   profile: 0
   quickedit: 0
   rdf: 0
+  responsive_tables_filter: 0
+  rest: 0
   rules: 0
   search: 0
+  serialization: 0
   shield: 0
   shortcut: 0
   simple_gmap: 0
@@ -68,6 +79,9 @@ module:
   tour: 0
   typed_data: 0
   user: 0
+  views_bulk_operations: 0
+  views_data_export: 0
+  views_field_view: 0
   views_ui: 0
   menu_link_content: 1
   pathauto: 1

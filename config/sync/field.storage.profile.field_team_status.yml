@@ -13,13 +13,13 @@ settings:
   allowed_values:
     -
       value: waiting
-      label: 'In waiting list'
+      label: 'У списку очікування'
     -
       value: process
-      label: 'In process'
+      label: 'В процесі'
     -
       value: confirmed
-      label: 'Confirmed, payment received'
+      label: 'Підтверджено, платіж отримано'
   allowed_values_function: ''
 module: options
 locked: false

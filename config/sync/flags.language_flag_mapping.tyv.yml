@@ -1,0 +1,9 @@
+uuid: 38e7e5a9-e45d-43bd-934f-01fac3e990f6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: FBqeaBIQJN9Pp_cTD8R1xRP6WPiw_FnshCq1BFSNlzc
+source: tyv
+info: null
+flag: ru-ty

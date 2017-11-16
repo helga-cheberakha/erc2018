@@ -318,7 +318,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Contact form'
+          label: 'Form ID'
           exclude: false
           alter:
             alter_text: false
@@ -581,14 +581,14 @@ display:
     display_title: 'Contact Us Messages'
     position: 1
     display_options:
-      path: admin/contact-us-messages
+      path: admin/content/contact-us-messages
       menu:
         type: normal
         title: 'Contact Us messages'
         description: 'Contact messages'
         expanded: false
-        parent: system.admin
-        weight: -98
+        parent: system.admin_content
+        weight: -100
         context: '0'
         menu_name: admin
       display_extenders: {  }

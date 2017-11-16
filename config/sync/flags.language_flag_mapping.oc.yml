@@ -1,0 +1,9 @@
+uuid: b0b0af54-8511-4521-8332-75fe1c93172a
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 2IRFBe08Ufic8_p7RSed0SakGoVcX5mJv0Xha3_aiVg
+source: oc
+info: null
+flag: oci

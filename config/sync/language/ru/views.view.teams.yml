@@ -1,0 +1,12 @@
+display:
+  block_teams:
+    display_options:
+      fields:
+        field_team_class:
+          label: Класс
+        field_team_name:
+          label: 'Название команды'
+        view:
+          label: Участники
+        view_1:
+          label: Страна

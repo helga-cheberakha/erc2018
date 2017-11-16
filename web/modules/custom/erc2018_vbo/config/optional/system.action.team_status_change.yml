@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - profile
+id: team_status_change
+label: 'Change status of the team'
+type: profile
+plugin: team_status_change
+configuration: {  }

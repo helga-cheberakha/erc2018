@@ -1,0 +1,9 @@
+uuid: dbd019c8-4ad0-4fa4-8c1c-fc77e6392317
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 6ZNGdEHDIpS7x7gTATrnUtXcehs_nL46td22c02MyDg
+source: bo
+info: null
+flag: bod

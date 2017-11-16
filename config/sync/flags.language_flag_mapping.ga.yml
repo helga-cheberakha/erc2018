@@ -1,0 +1,9 @@
+uuid: dce9a3d1-70a2-4153-8253-614c0befa483
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 7S6U0Tpac5gEbIiFKrMqXNLkRKJCH5qFFVNHsv8PBx8
+source: ga
+info: null
+flag: ie

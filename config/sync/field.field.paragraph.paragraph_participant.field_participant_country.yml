@@ -1,4 +1,4 @@
-uuid: c3862c6a-7e7e-438c-a0f2-219dbf9ac96c
+uuid: 7b0b6a10-c71d-486c-b035-4ec5fd55d12e
 langcode: uk
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - field.storage.paragraph.field_participant_country
     - paragraphs.paragraphs_type.paragraph_participant
   module:
-    - address
+    - country
 id: paragraph.paragraph_participant.field_participant_country
 field_name: field_participant_country
 entity_type: paragraph
@@ -18,5 +18,5 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  available_countries: {  }
-field_type: address_country
+  selectable_countries: {  }
+field_type: country

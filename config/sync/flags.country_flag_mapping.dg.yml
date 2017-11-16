@@ -1,0 +1,8 @@
+uuid: 7f717acc-c066-4280-96d9-6e594d6cac3d
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: v_CfdJR_xB5BAgNcameKAW6-a4iEa9vZ9Y54LsqJKTA
+source: dg
+flag: crs-io

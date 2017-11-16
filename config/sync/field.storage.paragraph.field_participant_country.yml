@@ -1,16 +1,17 @@
-uuid: 7ef39b9c-2b1c-4866-adc6-d4685d5b6011
+uuid: 6402c0c7-ade4-415d-8796-d0745fb9e6de
 langcode: uk
 status: true
 dependencies:
   module:
-    - address
+    - country
     - paragraphs
 id: paragraph.field_participant_country
 field_name: field_participant_country
 entity_type: paragraph
-type: address_country
-settings: {  }
-module: address
+type: country
+settings:
+  selectable_countries: {  }
+module: country
 locked: false
 cardinality: 1
 translatable: true

@@ -1,0 +1,16 @@
+display:
+  block_teams:
+    display_options:
+      fields:
+        field_team_number:
+          label: Number
+        field_team_class:
+          label: 'Team class'
+        field_team_name:
+          label: 'Team name'
+        view:
+          label: Participants
+        field_team_status:
+          label: 'Team status'
+        view_1:
+          label: Country

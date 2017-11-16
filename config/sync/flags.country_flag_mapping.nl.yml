@@ -1,0 +1,8 @@
+uuid: c4d7bb1f-462e-4e60-b878-d7c92209f355
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ZMeEpGB87S6TM79fFOgaA-bfYsxmt-rtCXVqiQTk0Jw
+source: nl
+flag: nl

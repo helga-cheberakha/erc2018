@@ -1,0 +1,9 @@
+uuid: 63960483-190a-4ed9-b39a-734d93e1e029
+langcode: uk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9qo_it5S12LJXAieXZEct31ZFr4WT1sl8f7tneWI6e4
+source: gsw-berne
+info: null
+flag: ch

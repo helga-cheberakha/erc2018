@@ -1,6 +1,6 @@
 uuid: 689bff8e-bb2d-4490-aa22-79d00160de4e
 langcode: uk
-status: true
+status: false
 dependencies:
   module:
     - ctools
@@ -22,7 +22,7 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
+    pages: "<front>\r\n/teams"
     negate: true
     context_mapping: {  }
   'entity_bundle:node':
