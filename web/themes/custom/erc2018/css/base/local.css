@@ -11,7 +11,10 @@
   top: 0;
   width: 100%;
   z-index: 100;
-  max-height: 75px;
+  height: 65px;
+}
+#header-top .container {
+  position: relative;
 }
 .toolbar-tray-open #header-top {
   margin-top: 79px;
@@ -69,9 +72,10 @@
 
 /* Main navigation */
 #header-top .navigation.menu--main {
-  float: none;
   clear: none;
-  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 #header-top #navbar,
 #header-top .navbar{
@@ -92,6 +96,7 @@
 }
 #header-top .navigation.menu--main .navbar-collapse.in {
   background-color: rgba(45, 45, 48, 1);
+  min-width: 300px;
 }
 #header-top ul.navbar-nav {
   list-style: none outside;
