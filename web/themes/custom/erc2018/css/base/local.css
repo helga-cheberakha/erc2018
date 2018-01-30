@@ -1,4 +1,7 @@
 /* Custom CSS overrides */
+.field__item {
+  display: block;
+}
 /* Header section */
 #header-top {
   background-color: rgba(45, 45, 48, 0.75);
@@ -364,6 +367,19 @@
 /* Team listing */
 .block-views-blockteams-block-teams {
   padding: 0 1em 2em;
+}
+.view-teams .views-table .views-field-field-team-number,
+.view-teams .views-table .views-field-view-1,
+.view-teams .views-table .views-field-field-team-class {
+  width: 5%;
+  text-align: center;
+}
+.view-teams .views-table .views-field-field-team-number {
+  text-align: left;
+}
+.view-teams .views-table .views-field-field-team-status,
+.view-teams .views-table .views-field-field-team-name {
+  width: 25%;
 }
 
 @media all and (min-width: 461px) and (max-width: 900px) {

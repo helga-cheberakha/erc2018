@@ -5,10 +5,12 @@
  * Contains erc2018_common.module.
  */
 
-use \Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\profile\Entity\Profile;
 use Drupal\profile\Entity\ProfileType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Implements hook_language_switch_links_alter().
@@ -65,6 +67,10 @@ function erc2018_common_form_user_erc2018_common_team_register_form_alter(&$form
     if (isset($form['entity_team'][$field_name])) {
       $form['entity_team'][$field_name]['#access'] = FALSE;
     }
+  }
+
+  if (isset($form['account']['pass'])) {
+    $form['account']['pass']['#required'] = FALSE;
   }
 
   // Custom validation and submission handlers.
@@ -144,6 +150,38 @@ function erc2018_common_form_user_erc2018_common_team_register_form_submit(array
       $entity->save();
     }
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function erc2018_common_form_profile_team_edit_form_alter(&$form, FormStateInterface $form_state) {
+  // Custom submission handlers.
+  $form['actions']['submit']['#submit'][] = 'erc2018_common_form_profile_team_edit_form_submit';
+}
+
+/**
+ * Extra form submission handler for the team edit form.
+ */
+function erc2018_common_form_profile_team_edit_form_submit(array &$form, FormStateInterface $form_state) {
+  // Set redirect to login form.
+  $form_state->setRedirect('view.teams.page_admin');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function erc2018_common_form_profile_team_delete_form_alter(&$form, FormStateInterface $form_state) {
+  // Custom submission handlers.
+  $form['actions']['submit']['#submit'][] = 'erc2018_common_form_profile_team_delete_form_submit';
+}
+
+/**
+ * Extra form submission handler for the team delete form.
+ */
+function erc2018_common_form_profile_team_delete_form_submit(array &$form, FormStateInterface $form_state) {
+  // Set redirect to login form.
+  $form_state->setRedirect('view.teams.page_admin');
 }
 
 /**

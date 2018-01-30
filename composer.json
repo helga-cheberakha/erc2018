@@ -23,6 +23,7 @@
         "drupal/admin_toolbar": "^1.20",
         "drupal/awesome_zymphonies_theme": "^1.0",
         "drupal/bg_image_formatter": "^1.0@beta",
+        "drupal/block_class": "^1.0@alpha",
         "drupal/bootstrap_business": "^1.0@beta",
         "drupal/bootstrap_kit": "^4.2",
         "drupal/bricks": "^1.6",
