@@ -1,0 +1,23 @@
+uuid: fb021872-f8ff-4ae6-8995-87749c30017c
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_si_card
+    - paragraphs.paragraphs_type.paragraph_participant
+  module:
+    - options
+id: paragraph.paragraph_participant.field_si_card
+field_name: field_si_card
+entity_type: paragraph
+bundle: paragraph_participant
+label: Чіп
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: own
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -72,6 +72,9 @@ function erc2018_common_form_user_erc2018_common_team_register_form_alter(&$form
   if (isset($form['account']['pass'])) {
     $form['account']['pass']['#required'] = FALSE;
   }
+  if (isset($form['account']['mail'])) {
+    $form['account']['mail']['#required'] = TRUE;
+  }
 
   // Custom validation and submission handlers.
   $form['actions']['submit']['#validate'][] = 'erc2018_common_form_user_erc2018_common_team_register_form_validate';
@@ -82,6 +85,8 @@ function erc2018_common_form_user_erc2018_common_team_register_form_alter(&$form
  * Extra form validation handler for the user registration form.
  */
 function erc2018_common_form_user_erc2018_common_team_register_form_validate(array &$form, FormStateInterface $form_state) {
+  $values = $form_state->getValues();
+
   $profiles = $form_state->get('profiles');
   if (!empty($profiles)) {
     foreach ($profiles as $bundle => $entity) {
@@ -93,14 +98,31 @@ function erc2018_common_form_user_erc2018_common_team_register_form_validate(arr
       }
 
       if ($bundle == 'team') {
-        $values = $form_state->getValues();
         // The team should have two participants at least.
         if (isset($values['entity_team']['field_participants']) && count($values['entity_team']['field_participants']) <= 2) {
           $form_state->setErrorByName('field_participants', t('Please add second participant. The team should have two participants at least.'));
         }
+        // SI-Card number is required if set up value of the SI-Card as own.
+        if (isset($values['entity_team']['field_participants'])) {
+          foreach ($values['entity_team']['field_participants'] as $delta => $participant) {
+            if (is_numeric($delta) && isset($participant['subform']) && isset($participant['subform']['field_si_card'][0]['value'])
+              && $participant['subform']['field_si_card'][0]['value'] == 'own'
+              && (!isset($participant['subform']['field_si_card_number'][0]['value']) || empty($participant['subform']['field_si_card_number'][0]['value']))) {
+
+              $form_state->setErrorByName('entity_team][field_participants][' . $delta . '][subform][field_si_card_number][0', t('Please add SI-Card number.'));
+            }
+          }
+        }
       }
     }
   }
+
+  if (isset($values['mail']) && !empty($values['mail']) && user_load_by_mail($values['mail'])) {
+    $form_state->setErrorByName('mail', t('The email address @mail is already taken.', [
+      '@mail' => $values['mail'],
+    ]));
+  }
+
   // Entity was validated in entityFormValidate(). This will prevent validation
   // exception from being thrown.
   $form_state->getFormObject()->validateForm($form, $form_state);
@@ -128,7 +150,7 @@ function erc2018_common_form_user_erc2018_common_team_register_form_submit(array
           $users = $query->execute()->fetchAllKeyed();
 
           if ($users) {
-            $team_number = current($users) + 1;
+            $team_number = array_pop($users) + 1;
           }
           else {
             $numbers = erc2018_common_get_teams_numbers();
@@ -136,18 +158,25 @@ function erc2018_common_form_user_erc2018_common_team_register_form_submit(array
           }
           // Username.
           $username = $team_class . $team_number;
+          if (user_load_by_name($username)) {
+            $username = $team_class . rand(1000, 3000);
+          }
+
+          if (!user_load_by_name($username)) {
+            // Set up team number.
+            $entity->set('field_team_number', $team_number);
+            // Set up username based on team class and team number.
+            $account->set('name', $username);
+            $account->save();
+
+            if ($account->id()) {
+              $entity->setOwnerId($account->id());
+              $entity->setActive(TRUE);
+              $entity->save();
+            }
+          }
         }
-
-        // Set up team number.
-        $entity->set('field_team_number', $team_number);
-        // Set up username based on team class and team number.
-        $account->set('name', $username);
-        $account->save();
       }
-
-      $entity->setOwnerId($account->id());
-      $entity->setActive(TRUE);
-      $entity->save();
     }
   }
 }
@@ -156,8 +185,36 @@ function erc2018_common_form_user_erc2018_common_team_register_form_submit(array
  * Implements hook_form_FORM_ID_alter().
  */
 function erc2018_common_form_profile_team_edit_form_alter(&$form, FormStateInterface $form_state) {
-  // Custom submission handlers.
+  // Custom validation and submission handlers.
+  $form['actions']['submit']['#validate'][] = 'erc2018_common_form_profile_team_edit_form_validate';
   $form['actions']['submit']['#submit'][] = 'erc2018_common_form_profile_team_edit_form_submit';
+}
+
+/**
+ * Extra form validation handler for the team edit form.
+ */
+function erc2018_common_form_profile_team_edit_form_validate(array &$form, FormStateInterface $form_state) {
+  $values = $form_state->getValues();
+
+  // The team should have two participants at least.
+  if (isset($values['field_participants']) && count($values['field_participants']) <= 2) {
+    $form_state->setErrorByName('field_participants[1', t('Please add second participant. The team should have two participants at least.'));
+  }
+  // SI-Card number is required if set up value of the SI-Card as own.
+  if (isset($values['field_participants'])) {
+    foreach ($values['field_participants'] as $delta => $participant) {
+      if (is_numeric($delta) && isset($participant['subform']) && isset($participant['subform']['field_si_card'][0]['value'])
+        && $participant['subform']['field_si_card'][0]['value'] == 'own'
+        && (!isset($participant['subform']['field_si_card_number'][0]['value']) || empty($participant['subform']['field_si_card_number'][0]['value']))) {
+
+        $form_state->setErrorByName('field_participants][' . $delta . '][subform][field_si_card_number][0', t('Please add SI-Card number.'));
+      }
+    }
+  }
+
+  // Entity was validated in entityFormValidate(). This will prevent validation
+  // exception from being thrown.
+  $form_state->getFormObject()->validateForm($form, $form_state);
 }
 
 /**
@@ -231,4 +288,17 @@ function erc2018_common_get_teams_numbers() {
     'wuv' => 2600,
     'xuv' => 2800,
   ];
+}
+
+/**
+ * Implements hook_form_paragraphs_subform_TYPE_alter().
+ */
+function erc2018_common_form_paragraphs_subform_paragraph_participant_alter(array &$subform, \Drupal\Core\Form\FormStateInterface $form_state, $delta) {
+  if (isset($subform['field_si_card']) && isset($subform['field_si_card_number'])) {
+    $subform['field_si_card_number']['#states'] = [
+      'visible' => [
+        [':input[name="entity_team[field_participants][' . $delta . '][subform][field_si_card]"]' => [["value" => "own"]],],
+      ],
+    ];
+  }
 }

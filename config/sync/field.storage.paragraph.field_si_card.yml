@@ -1,0 +1,27 @@
+uuid: 5a7f0cf2-7a90-4bd1-a5f5-ab52f2ac772c
+langcode: uk
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_si_card
+field_name: field_si_card
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: own
+      label: 'Номер чіпу'
+    -
+      value: rent
+      label: Орендувати
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

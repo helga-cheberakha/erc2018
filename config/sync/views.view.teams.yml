@@ -8,6 +8,8 @@ dependencies:
     - field.storage.paragraph.field_participant_fname
     - field.storage.paragraph.field_participant_gender
     - field.storage.paragraph.field_participant_lname
+    - field.storage.paragraph.field_si_card
+    - field.storage.paragraph.field_si_card_number
     - field.storage.profile.field_team_class
     - field.storage.profile.field_team_name
     - field.storage.profile.field_team_number
@@ -98,11 +100,14 @@ display:
             field_team_name: field_team_name
             mail: mail
             view: view
+            view_2: view_2
+            view_3: view_3
             created: created
             changed: changed
             field_team_status: field_team_status
             uid: uid
-            nothing: uid
+            nothing_1: nothing_1
+            nothing: nothing_1
           info:
             views_bulk_operations_bulk_form:
               align: ''
@@ -154,6 +159,16 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            view_2:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            view_3:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             created:
               sortable: false
               default_sort_order: asc
@@ -176,6 +191,13 @@ display:
               empty_column: false
               responsive: ''
             uid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nothing_1:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1008,6 +1030,593 @@ display:
         - 'config:field.storage.paragraph.field_participant_birthday'
         - 'config:field.storage.paragraph.field_participant_fname'
         - 'config:field.storage.paragraph.field_participant_lname'
+  block_ps_admin:
+    display_plugin: block
+    id: block_ps_admin
+    display_title: 'Participants for Admin (Block)'
+    position: 4
+    display_options:
+      display_extenders: {  }
+      relationships:
+        field_participants:
+          id: field_participants
+          table: profile__field_participants
+          field: field_participants
+          relationship: none
+          group_type: group
+          admin_label: 'field_participants: Paragraph'
+          required: true
+          plugin_id: standard
+      defaults:
+        relationships: false
+        arguments: false
+        fields: false
+        style: false
+        row: false
+        title: false
+      arguments:
+        profile_id:
+          id: profile_id
+          table: profile
+          field: profile_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: profile
+          entity_field: profile_id
+          plugin_id: numeric
+      fields:
+        field_participant_lname:
+          id: field_participant_lname
+          table: paragraph__field_participant_lname
+          field: field_participant_lname
+          relationship: field_participants
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_participant_fname:
+          id: field_participant_fname
+          table: paragraph__field_participant_fname
+          field: field_participant_fname
+          relationship: field_participants
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ field_participant_fname }} {{ field_participant_lname }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: div
+          element_class: participant-name
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline:
+            field_participant_birthday: field_participant_birthday
+            field_participant_lname: field_participant_lname
+            field_participant_fname: field_participant_fname
+          separator: ''
+          hide_empty: false
+      display_description: ''
+      title: ''
+      block_description: Participants
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+      tags:
+        - 'config:field.storage.paragraph.field_participant_fname'
+        - 'config:field.storage.paragraph.field_participant_lname'
+  block_ps_dob:
+    display_plugin: block
+    id: block_ps_dob
+    display_title: 'Participants DOB (Block)'
+    position: 4
+    display_options:
+      display_extenders: {  }
+      relationships:
+        field_participants:
+          id: field_participants
+          table: profile__field_participants
+          field: field_participants
+          relationship: none
+          group_type: group
+          admin_label: 'field_participants: Paragraph'
+          required: true
+          plugin_id: standard
+      defaults:
+        relationships: false
+        arguments: false
+        fields: false
+        style: false
+        row: false
+        title: false
+      arguments:
+        profile_id:
+          id: profile_id
+          table: profile
+          field: profile_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: profile
+          entity_field: profile_id
+          plugin_id: numeric
+      fields:
+        field_participant_birthday:
+          id: field_participant_birthday
+          table: paragraph__field_participant_birthday
+          field: field_participant_birthday
+          relationship: field_participants
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_custom
+          settings:
+            timezone_override: ''
+            date_format: 'd F Y'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline:
+            field_participant_birthday: field_participant_birthday
+            field_participant_lname: field_participant_lname
+            field_participant_fname: field_participant_fname
+          separator: ''
+          hide_empty: false
+      display_description: ''
+      title: ''
+      block_description: Participants
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+      tags:
+        - 'config:field.storage.paragraph.field_participant_birthday'
+  block_ps_si:
+    display_plugin: block
+    id: block_ps_si
+    display_title: 'Participants SI (Block)'
+    position: 4
+    display_options:
+      display_extenders: {  }
+      relationships:
+        field_participants:
+          id: field_participants
+          table: profile__field_participants
+          field: field_participants
+          relationship: none
+          group_type: group
+          admin_label: 'field_participants: Paragraph'
+          required: true
+          plugin_id: standard
+      defaults:
+        relationships: false
+        arguments: false
+        fields: false
+        style: false
+        row: false
+        title: false
+      arguments:
+        profile_id:
+          id: profile_id
+          table: profile
+          field: profile_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          not: false
+          entity_type: profile
+          entity_field: profile_id
+          plugin_id: numeric
+      fields:
+        field_si_card:
+          id: field_si_card
+          table: paragraph__field_si_card
+          field: field_si_card
+          relationship: field_participants
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_si_card_number:
+          id: field_si_card_number
+          table: paragraph__field_si_card_number
+          field: field_si_card_number
+          relationship: field_participants
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: '{{ field_si_card }}'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          inline:
+            field_participant_birthday: field_participant_birthday
+            field_participant_lname: field_participant_lname
+            field_participant_fname: field_participant_fname
+          separator: ''
+          hide_empty: false
+      display_description: ''
+      title: ''
+      block_description: Participants
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+      tags:
+        - 'config:field.storage.paragraph.field_si_card'
+        - 'config:field.storage.paragraph.field_si_card_number'
   data_export_teams:
     display_plugin: data_export
     id: data_export_teams
@@ -2457,7 +3066,111 @@ display:
           empty_zero: false
           hide_alter_empty: true
           view: teams
-          display: block_participants
+          display: block_ps_admin
+          arguments: '{{ fields.profile_id }}'
+          plugin_id: view
+        view_2:
+          id: view_2
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Дата народження'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view: teams
+          display: block_ps_dob
+          arguments: '{{ fields.profile_id }}'
+          plugin_id: view
+        view_3:
+          id: view_3
+          table: views
+          field: view
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Чіп
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view: teams
+          display: block_ps_si
           arguments: '{{ fields.profile_id }}'
           plugin_id: view
         created:
@@ -2664,11 +3377,11 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
-            alter_text: true
+            alter_text: false
             text: edit
-            make_link: true
+            make_link: false
             path: '/user/{{ uid }}/team'
             absolute: false
             external: false
@@ -2722,20 +3435,69 @@ display:
           entity_type: user
           entity_field: uid
           plugin_id: field
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: 'Global: Custom text: Edit link'
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: edit
+            make_link: true
+            path: '/user/{{ uid }}/team?destination=admin/content/teams'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          plugin_id: custom
         nothing:
           id: nothing
           table: views
           field: nothing
           relationship: none
           group_type: group
-          admin_label: 'Global: Custom text: Delte link'
+          admin_label: 'Global: Custom text: Delete link'
           label: ''
           exclude: false
           alter:
             alter_text: true
             text: delete
             make_link: true
-            path: 'profile/{{ profile_id }}/delete?destination=admin/content/teams'
+            path: '/user/{{ uid }}/cancel?destination=admin/content/teams'
             absolute: false
             external: false
             replace_spaces: false

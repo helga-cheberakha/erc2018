@@ -1,0 +1,21 @@
+uuid: f9259ea0-a604-415c-8d40-d2fbe460ec56
+langcode: uk
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_si_card_number
+field_name: field_si_card_number
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

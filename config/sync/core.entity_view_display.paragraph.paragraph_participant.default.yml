@@ -8,6 +8,8 @@ dependencies:
     - field.field.paragraph.paragraph_participant.field_participant_fname
     - field.field.paragraph.paragraph_participant.field_participant_gender
     - field.field.paragraph.paragraph_participant.field_participant_lname
+    - field.field.paragraph.paragraph_participant.field_si_card
+    - field.field.paragraph.paragraph_participant.field_si_card_number
     - paragraphs.paragraphs_type.paragraph_participant
   module:
     - country
@@ -51,6 +53,21 @@ content:
     region: content
   field_participant_lname:
     weight: 2
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_si_card:
+    weight: 6
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_si_card_number:
+    weight: 7
     label: inline
     settings:
       link_to_entity: false

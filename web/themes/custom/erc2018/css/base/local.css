@@ -318,10 +318,14 @@
 /* Registration form */
 .user-erc2018-common-team-register-form label,
 .user-erc2018-common-team-register-form .label,
-.user-erc2018-common-team-register-form .fieldset-legend{
+.user-erc2018-common-team-register-form .fieldset-legend,
+.user-erc2018-common-team-register-form .field--widget-options-buttons legend {
   color: #444;
   clear: both;
   font-size: 16px;
+}
+.user-erc2018-common-team-register-form .field--widget-options-buttons legend {
+  margin-bottom: 5px;
 }
 .user-erc2018-common-team-register-form #edit-entity-team .tabledrag-toggle-weight-wrapper {
   display: none;
@@ -349,12 +353,14 @@
 }
 .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-birthday {
   clear: both;
+  margin-bottom: 1em;
 }
 .user-erc2018-common-team-register-form #edit-entity-team .field--name-field-participants .fieldset-wrapper .container-inline .form-item,
 .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-fname,
 .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-lname,
 .user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-country,
-.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-gender {
+.user-erc2018-common-team-register-form #edit-entity-team .field-multiple-table .paragraphs-subform .field--name-field-participant-gender,
+.user-erc2018-common-team-register-form .field--widget-options-buttons {
   margin-bottom: 1em;
 }
 .user-erc2018-common-team-register-form .form-actions {
@@ -374,17 +380,22 @@
   padding: 0 1em 2em;
 }
 .view-teams .views-table .views-field-field-team-number,
-.view-teams .views-table .views-field-view-1,
-.view-teams .views-table .views-field-field-team-class {
+.view-teams .views-table .views-field-view-1 {
   width: 5%;
+  text-align: center;
+}
+.view-teams .views-table .views-field-field-team-class {
+  width: 12%;
   text-align: center;
 }
 .view-teams .views-table .views-field-field-team-number {
   text-align: left;
 }
-.view-teams .views-table .views-field-field-team-status,
 .view-teams .views-table .views-field-field-team-name {
-  width: 25%;
+  width: 18%;
+}
+.view-teams .views-table .views-field-field-team-status {
+  width: 20%;
 }
 
 @media all and (min-width: 461px) and (max-width: 900px) {

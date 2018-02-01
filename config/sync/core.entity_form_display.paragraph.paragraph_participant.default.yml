@@ -8,8 +8,11 @@ dependencies:
     - field.field.paragraph.paragraph_participant.field_participant_fname
     - field.field.paragraph.paragraph_participant.field_participant_gender
     - field.field.paragraph.paragraph_participant.field_participant_lname
+    - field.field.paragraph.paragraph_participant.field_si_card
+    - field.field.paragraph.paragraph_participant.field_si_card_number
     - paragraphs.paragraphs_type.paragraph_participant
   module:
+    - conditional_fields
     - country
     - datetime
 id: paragraph.paragraph_participant.default
@@ -52,6 +55,21 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_si_card:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_si_card_number:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields: {  }
     type: string_textfield
     region: content
 hidden:
