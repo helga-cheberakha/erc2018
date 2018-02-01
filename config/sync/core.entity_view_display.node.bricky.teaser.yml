@@ -4,10 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.bricky.field_body
+    - field.field.node.bricky.field_documents
+    - field.field.node.bricky.field_featured_page
+    - field.field.node.bricky.field_teaser_section
     - node.type.bricky
   module:
-    - bricks
     - user
 _core:
   default_config_hash: GBAR2lsA5Prob44vO5Xwe1qQa9K27XxgRmHRDpEh7-I
@@ -15,16 +16,10 @@ id: node.bricky.teaser
 targetEntityType: node
 bundle: bricky
 mode: teaser
-content:
-  field_body:
-    type: bricks_nested
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    region: content
+content: {  }
 hidden:
+  field_documents: true
+  field_featured_page: true
+  field_teaser_section: true
   langcode: true
   links: true

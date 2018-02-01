@@ -3,14 +3,14 @@ langcode: uk
 status: true
 dependencies:
   config:
-    - field.field.node.bricky.field_body
+    - field.field.node.bricky.body
     - field.field.node.bricky.field_documents
     - field.field.node.bricky.field_featured_page
     - field.field.node.bricky.field_teaser_section
     - node.type.bricky
   module:
-    - bricks
     - file
+    - text
     - user
 _core:
   default_config_hash: XmOMHhzDNEchoQ5JoCkewi2E7sOtyw90oDRdGQ_Desw
@@ -19,14 +19,12 @@ targetEntityType: node
 bundle: bricky
 mode: default
 content:
-  field_body:
+  body:
     weight: 0
     label: hidden
-    settings:
-      view_mode: default
-      link: false
+    settings: {  }
     third_party_settings: {  }
-    type: bricks_nested
+    type: text_default
     region: content
   field_documents:
     weight: 1

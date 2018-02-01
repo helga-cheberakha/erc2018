@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_description
     - node.type.article
+  content:
+    - 'file:file:784b3ba1-0e09-4b4f-8501-07809efa3b59'
   module:
     - node
     - text
@@ -411,7 +413,20 @@ display:
       title: Новини
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        entity_file:
+          id: entity_file
+          table: views
+          field: entity_file
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: true
+          target: 784b3ba1-0e09-4b4f-8501-07809efa3b59
+          view_mode: default
+          bypass_access: false
+          plugin_id: entity
       relationships: {  }
       arguments: {  }
       display_extenders: {  }

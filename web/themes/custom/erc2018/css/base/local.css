@@ -33,6 +33,8 @@
   float: left;
   margin: 0 15px 0 0;
   clear: none;
+  position: relative;
+  z-index: 9999;
 }
 #header-top #block-languageswitcher .content {
   display: block;
@@ -73,7 +75,6 @@
 /* Main navigation */
 #header-top .navigation.menu--main {
   clear: none;
-  position: absolute;
   right: 0;
   top: 0;
 }
@@ -93,6 +94,8 @@
 }
 #header-top .navigation.menu--main .navbar-collapse {
   color: #fff;
+  padding-left: 0;
+  padding-right: 0;
 }
 #header-top .navigation.menu--main .navbar-collapse.in {
   background-color: rgba(45, 45, 48, 1);
@@ -211,6 +214,10 @@
   background-color: #4b4848;
 }
 /* Main content */
+#main-content {
+  background: url("../../images/footer_trees.png") repeat-x 0 100%;
+  background-size: 70%;
+}
 #block-pagetitle {
   clear: both;
 }
@@ -378,24 +385,16 @@
 /* Team listing */
 .block-views-blockteams-block-teams {
   padding: 0 1em 2em;
+  word-wrap: break-word;
 }
-.view-teams .views-table .views-field-field-team-number,
-.view-teams .views-table .views-field-view-1 {
-  width: 5%;
-  text-align: center;
+.block-views-blockteams-block-teams .tablesaw th,
+.block-views-blockteams-block-teams .tablesaw td {
+  padding-left: 0;
+  padding-right: 0;
 }
-.view-teams .views-table .views-field-field-team-class {
-  width: 12%;
-  text-align: center;
-}
-.view-teams .views-table .views-field-field-team-number {
-  text-align: left;
-}
-.view-teams .views-table .views-field-field-team-name {
-  width: 18%;
-}
-.view-teams .views-table .views-field-field-team-status {
-  width: 20%;
+
+#subfooter {
+  border: none;
 }
 
 @media all and (min-width: 461px) and (max-width: 900px) {
@@ -530,5 +529,28 @@
   .user-erc2018-common-team-register-form .form-actions input {
     float: right;
     background-color: #E74C3C;
+  }
+  .block-views-blockteams-block-teams .tablesaw th,
+  .block-views-blockteams-block-teams .tablesaw td {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  .view-teams .views-table .views-field-field-team-number,
+  .view-teams .views-table .views-field-view-1 {
+    width: 5%;
+    text-align: center;
+  }
+  .view-teams .views-table .views-field-field-team-class {
+    width: 12%;
+    text-align: center;
+  }
+  .view-teams .views-table .views-field-field-team-number {
+    text-align: left;
+  }
+  .view-teams .views-table .views-field-field-team-name {
+    width: 18%;
+  }
+  .view-teams .views-table .views-field-field-team-status {
+    width: 20%;
   }
 }

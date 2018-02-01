@@ -1,5 +1,5 @@
-user: erc2018
-pass: ukraine
+user: ''
+pass: ''
 print: 'Hello, user: [user], pass: [pass]!'
 allow_cli: true
 _core:

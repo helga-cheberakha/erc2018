@@ -1,0 +1,22 @@
+uuid: 633c5333-6ff5-47b0-8a7d-50e277967f4c
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.bricky
+  module:
+    - text
+id: node.bricky.body
+field_name: body
+entity_type: node
+bundle: bricky
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_with_summary

@@ -20,3 +20,4 @@ permissions:
   - 'skip comment approval'
   - 'use text format basic_html'
   - 'view any brick entities'
+  - 'view profile'
