@@ -269,6 +269,7 @@ function fancy_login_theme()
 {
 	return [
 		'ssl_icon' => [
+      'render element' => 'elements',
 			'template' => 'ssl-icon',
 		],
 	];
