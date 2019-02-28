@@ -80,10 +80,10 @@ class Flickr extends MediaTypeBase {
    */
   public static $validationRegexp = array(
     // Album Regex.
-    '@(?P<shortcode>(.*)  href=\"https://www.flickr.com/photos/(?<username>[^\s]+)/albums/(?<imageid>[0-9]+)\" title=\"(?P<title>[^.*]+)\"><img src=\"(?P<thumbnail>[^\s]+)\" width=\"(?P<width>[0-9]+)\" height=\"(?P<height>[0-9]+)\" alt=\"(.*)\"></a>(.*))@i' => 'shortcode',
+    '@(?P<shortcode>(.*)(\s+)href=\"https://www.flickr.com/photos/(?<username>[^\s]+)/albums/(?<imageid>[0-9]+)\"(\s+)title=\"(?P<title>[\s\S]*)\"><img src=\"(?P<thumbnail>[^\s]+)\" width=\"(?P<width>[0-9]+)\" height=\"(?P<height>[0-9]+)\" alt=\"(.*)\"></a>(.*))@i' => 'shortcode',
 
     // Image Regex.
-    '@(?P<shortcode>(.*)  href=\"https://www.flickr.com/photos/(?<username>[^\s]+)/(?<imageid>[0-9]+)/(.*)\" title=\"(?P<title>[^.*]+)\"><img src=\"(?P<thumbnail>[^\s]+)\" width=\"(?P<width>[0-9]+)\" height=\"(?P<height>[0-9]+)\" alt=\"(.*)\"></a>(.*))@i' => 'shortcode',
+    '@(?P<shortcode>(.*)(\s+)href=\"https://www.flickr.com/photos/(?<username>[^\s]+)/(?<imageid>[0-9]+)/(.*)\"(\s+)title=\"(?P<title>[\s\S]*)\"><img src=\"(?P<thumbnail>[^\s]+)\" width=\"(?P<width>[0-9]+)\" height=\"(?P<height>[0-9]+)\" alt=\"(.*)\"></a>(.*))@i' => 'shortcode',
   );
 
   /**
