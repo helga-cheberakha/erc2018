@@ -1,0 +1,75 @@
+diff --git a/src/Plugin/Block/MenuBlock.php b/src/Plugin/Block/MenuBlock.php
+index fab522a..ca63dae 100644
+--- a/src/Plugin/Block/MenuBlock.php
++++ b/src/Plugin/Block/MenuBlock.php
+@@ -61,6 +61,13 @@ class MenuBlock extends SystemMenuBlock {
+       '#process' => [[get_class(), 'processMenuBlockFieldSets']],
+     ];
+ 
++    $form['advanced']['follow'] = [
++      '#type' => 'checkbox',
++      '#title' => "<strong>" . $this->t('Follow active trail') . "</strong>",
++      '#default_value' => $config['follow'],
++      '#description' => $this->t('Follow current active trail.'),
++    ];
++
+     $form['style']['suggestion'] = [
+       '#type' => 'machine_name',
+       '#title' => $this->t('Theme hook suggestion'),
+@@ -73,7 +80,7 @@ class MenuBlock extends SystemMenuBlock {
+     ];
+ 
+     // Open the details field sets if their config is not set to defaults.
+-    foreach(['menu_levels', 'advanced', 'style'] as $fieldSet) {
++    foreach (['menu_levels', 'advanced', 'style'] as $fieldSet) {
+       foreach (array_keys($form[$fieldSet]) as $field) {
+         if (isset($defaults[$field]) && $defaults[$field] !== $config[$field]) {
+           $form[$fieldSet]['#open'] = TRUE;
+@@ -102,6 +109,7 @@ class MenuBlock extends SystemMenuBlock {
+     $this->configuration['depth'] = $form_state->getValue('depth');
+     $this->configuration['expand'] = $form_state->getValue('expand');
+     $this->configuration['parent'] = $form_state->getValue('parent');
++    $this->configuration['follow'] = $form_state->getValue('follow');
+     $this->configuration['suggestion'] = $form_state->getValue('suggestion');
+   }
+ 
+@@ -117,15 +125,28 @@ class MenuBlock extends SystemMenuBlock {
+     $depth = $this->configuration['depth'];
+     $expand = $this->configuration['expand'];
+     $parent = $this->configuration['parent'];
+-    $suggestion = $this->configuration['suggestion'];
++    $follow = $this->configuration['follow'];
+ 
++    $max_depth = $level + $depth - 1;
+     $parameters->setMinDepth($level);
++
++    if ($follow) {
++      $level += count($parameters->activeTrail) - 1;
++      end($parameters->activeTrail);
++      $root_item = current($parameters->activeTrail);
++      if (empty($root_item) && count($parameters->activeTrail) > 1) {
++        $root_item = prev($parameters->activeTrail);
++        $level--;
++      }
++      $parameters->setRoot($root_item);
++    }
++
+     // When the depth is configured to zero, there is no depth limit. When depth
+     // is non-zero, it indicates the number of levels that must be displayed.
+     // Hence this is a relative depth that we must convert to an actual
+     // (absolute) depth, that may never exceed the maximum depth.
+-    if ($depth > 0) {
+-      $parameters->setMaxDepth(min($level + $depth - 1, $this->menuTree->maxDepth()));
++    if ($max_depth > 0) {
++      $parameters->setMaxDepth(min($max_depth, $this->menuTree->maxDepth()));
+     }
+     // If expandedParents is empty, the whole menu tree is built.
+     if ($expand) {
+@@ -184,6 +205,7 @@ class MenuBlock extends SystemMenuBlock {
+       'depth' => 0,
+       'expand' => 0,
+       'parent' => $this->getDerivativeId() . ':',
++      'follow' => 0,
+       'suggestion' => strtr($this->getDerivativeId(), '-', '_'),
+     ];
+   }
