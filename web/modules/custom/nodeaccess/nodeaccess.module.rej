@@ -1,0 +1,19 @@
+***************
+*** 292,299 ****
+   // Load all roles.
+   $db = \Drupal::database();
+   $result = $db->select('nodeaccess', 'na')
+-     ->fields('na', ['na.gid', 'na.grant_view, na.grant_update, na.grant_delete'])
+      ->condition('nid', $node->id, '=')
+      ->condition('realm', 'nodeaccess_rid', '=')
+      ->execute()
+  
+--- 292,299 ----
+   // Load all roles.
+   $db = \Drupal::database();
+   $result = $db->select('nodeaccess', 'na')
++     ->fields('na', ['na.gid', 'na.grant_view', 'na.grant_update', 'na.grant_delete'])
+      ->condition('nid', $node->id, '=')
+      ->condition('realm', 'nodeaccess_rid', '=')
+      ->execute()
+  
