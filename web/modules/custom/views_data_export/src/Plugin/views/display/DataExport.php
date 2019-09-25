@@ -33,104 +33,12 @@ class DataExport extends RestExport {
    * {@inheritdoc}
    */
   public static function buildResponse($view_id, $display_id, array $args = []) {
-    // Load the View we're working with and set its display ID so we can get
-    // the exposed input.
-    $view = Views::getView($view_id);
-    $view->setDisplay($display_id);
-    $view->setArguments($args);
+    // Do not call the parent method, as it makes the response harder to alter.
+    // @see https://www.drupal.org/node/2779807
+    $build = static::buildBasicRenderable($view_id, $display_id, $args);
 
-    // Build different responses whether batch or standard method is used.
-    if ($view->display_handler->getOption('export_method') == 'batch') {
-      return static::buildBatch($view, $args);
-    }
-
-    return static::buildStandard($view);
-  }
-
-  /**
-   * Builds batch export response.
-   *
-   * @param \Drupal\views\ViewExecutable $view
-   *    The view to export.
-   *
-   * @return null|\Symfony\Component\HttpFoundation\RedirectResponse
-   *    Redirect to the batching page.
-   */
-  protected static function buildBatch(ViewExecutable $view, $args) {
-    // Get total number of items.
-    $view->get_total_rows = TRUE;
-    $export_limit = $view->getDisplay()->getOption('export_limit');
-
-    $view->preExecute($args);
-    $view->build();
-    $count_query = clone $view->query;
-    $count_query_results = $count_query->query(true)->execute();
-
-
-    if ($count_query_results instanceof \Drupal\search_api\Query\ResultSetInterface) {
-      $total_rows = $count_query_results->getResultCount();
-    }
-    else {
-      $count_query_results->allowRowCount = TRUE;
-      $total_rows = $count_query_results->rowCount();
-    }
-
-    // Don't load and instantiate so many entities.
-    $view->query->setLimit(1);
-    $view->execute();
-
-    // If export limit is set and the number of rows is greater than the
-    // limit, then set the total to limit.
-    if ($export_limit && $export_limit < $total_rows) {
-      $total_rows = $export_limit;
-    }
-
-    $batch_definition = [
-      'operations' => [
-        [
-          [static::class, 'processBatch'],
-          [
-            $view->id(),
-            $view->current_display,
-            $view->args,
-            $view->getExposedInput(),
-            $total_rows,
-          ],
-        ],
-      ],
-      'title' => t('Exporting data...'),
-      'progressive' => TRUE,
-      'progress_message' => t('@percentage% complete. Time elapsed: @elapsed'),
-      'finished' => [static::class, 'finishBatch'],
-    ];
-    batch_set($batch_definition);
-
-    // The redirect destination is usually set with a destination, fall back
-    // to option redirect path, if empty redirect to front.
-    $redirect_path = $view->display_handler->getOption('redirect_path');
-    if (empty($redirect_path)) {
-      return batch_process(Url::fromRoute('<front>'));
-    }
-    else {
-      return batch_process(Url::fromUserInput(trim($redirect_path)));
-    }
-
-  }
-
-  /**
-   * Builds standard export response.
-   *
-   * @param \Drupal\views\ViewExecutable $view
-   *    The view to export.
-   *
-   * @return \Drupal\Core\Cache\CacheableResponse
-   *    Redirect to the batching page.
-   */
-  protected static function buildStandard(ViewExecutable $view) {
-    $build = $view->buildRenderable();
-
-    // Setup an empty response so headers can be added as needed during views
-    // rendering and processing.
+    // Setup an empty response, so for example, the Content-Disposition header
+    // can be set.
     $response = new CacheableResponse('', 200);
     $build['#response'] = $response;
 
@@ -167,18 +75,6 @@ class DataExport extends RestExport {
     $options['style']['contains']['type']['default'] = 'data_export';
     $options['row']['contains']['type']['default'] = 'data_field';
 
-    // We don't want to use pager as it doesn't make any sense. But it cannot
-    // just be removed from a view as it is core functionality. These values
-    // will be controlled by custom configuration.
-    $options['pager']['contains'] = [
-      'type' => ['default' => 'none'],
-      'options' => ['default' => ['offset' => 0]],
-    ];
-
-    $options['export_method'] = ['default' => 'standard'];
-    $options['export_batch_size'] = ['default' => '1000'];
-    $options['export_limit'] = ['default' => '0'];
-
     return $options;
   }
 
@@ -187,50 +83,6 @@ class DataExport extends RestExport {
    */
   public function optionsSummary(&$categories, &$options) {
     parent::optionsSummary($categories, $options);
-
-    // Doesn't make sense to have a pager for data export so remove it.
-    unset($categories["pager"]);
-
-    // Add a view configuration category for data export settings in the
-    // second column.
-    $categories['export_settings'] = [
-      'title' => $this->t('Export settings'),
-      'column' => 'second',
-      'build' => [
-        '#weight' => 50,
-      ],
-    ];
-
-    $options['export_method'] = [
-      'category' => 'export_settings',
-      'title' => $this->t('Method'),
-      'desc' => $this->t('Change the way rows are processed.'),
-    ];
-
-    switch ($this->getOption('export_method')) {
-      case 'standard':
-        $options['export_method']['value'] = $this->t('Standard');
-        break;
-
-      case 'batch':
-        $options['export_method']['value'] =
-          $this->t('Batch (size: @size)', ['@size' => $this->getOption('export_batch_size')]);
-        break;
-    }
-
-    $options['export_limit'] = [
-      'category' => 'export_settings',
-      'title' => $this->t('Limit'),
-      'desc' => $this->t('The maximum amount of rows to export.'),
-    ];
-
-    $limit = $this->getOption('export_limit');
-    if ($limit) {
-      $options['export_limit']['value'] = $this->t('@nr rows', ['@nr' => $limit]);
-    }
-    else {
-      $options['export_limit']['value'] = $this->t('no limit');
-    }
 
     $displays = array_filter($this->getOption('displays'));
     if (count($displays) > 1) {
@@ -278,46 +130,6 @@ class DataExport extends RestExport {
         unset($form['style']['type']['#options']['serializer']);
         break;
 
-      case 'export_method':
-        $form['export_method'] = [
-          '#type' => 'radios',
-          '#title' => $this->t('Export method'),
-          '#default_value' => $this->options['export_method'],
-          '#options' => [
-            'standard' => $this->t('Standard'),
-            'batch' => $this->t('Batch'),
-          ],
-          '#required' => TRUE,
-        ];
-
-        $form['export_method']['standard']['#description'] = $this->t('Exports under one request. Best fit for small exports.');
-        $form['export_method']['batch']['#description'] = $this->t('Exports data in sequences. Should be used when large amount of data is exported (> 2000 rows).');
-
-        $form['export_batch_size'] = [
-          '#type' => 'number',
-          '#title' => $this->t('Batch size'),
-          '#description' => $this->t("The number of rows to process under a request."),
-          '#default_value' => $this->options['export_batch_size'],
-          '#required' => TRUE,
-          '#states' => [
-            'visible' => [':input[name=export_method]' => ['value' => 'batch']],
-          ],
-        ];
-
-        break;
-
-      case 'export_limit':
-        $form['export_limit'] = [
-          '#type' => 'number',
-          '#title' => $this->t('Limit'),
-          '#description' => $this->t("The maximum amount of rows to export. 0 means unlimited."),
-          '#default_value' => $this->options['export_limit'],
-          '#min' => 0,
-          '#required' => TRUE,
-        ];
-
-        break;
-
       case 'path':
         $form['filename'] = [
           '#type' => 'textfield',
@@ -325,21 +137,6 @@ class DataExport extends RestExport {
           '#default_value' => $this->getOption('filename'),
           '#description' => $this->t('The filename that will be suggested to the browser for downloading purposes. You may include replacement patterns from the list below.'),
         ];
-
-        $form['automatic_download'] = [
-          '#type' => 'checkbox',
-          '#title' => $this->t("Download instantly"),
-          '#description' => $this->t("Check this if you want to download the file instantly after being created. Otherwise you will be redirected to above Redirect path containing the download link."),
-          '#default_value' => $this->options['automatic_download'],
-        ];
-
-        $form['redirect_path'] = [
-         '#type' => 'textfield',
-         '#title' => $this->t('Redirect path'),
-         '#default_value' => $this->options['redirect_path'],
-         '#description' => $this->t('If you do not check Download instantly, you will be redirected to this path containing download link after export finished. Leave blank for <front>.'),
-        ];
-
         // Support tokens.
         $this->globalTokenForm($form, $form_state);
         break;
