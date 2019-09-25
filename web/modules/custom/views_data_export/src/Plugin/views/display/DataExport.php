@@ -5,12 +5,10 @@ namespace Drupal\views_data_export\Plugin\views\display;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Cache\CacheableResponse;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
+use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\rest\Plugin\views\display\RestExport;
-use Drupal\views\Views;
 use Drupal\views\ViewExecutable;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
+use Drupal\views\Views;
 
 /**
  * Provides a data export display plugin.
@@ -145,34 +143,16 @@ class DataExport extends RestExport {
     $cache_metadata = CacheableMetadata::createFromRenderArray($build);
     $response->addCacheableDependency($cache_metadata);
 
+    // Set filename if such exists.
+    $view = Views::getView($view_id);
+    $view->setDisplay($display_id);
+    if ($filename = $view->getDisplay()->getOption('filename')) {
+      $bubbleable_metadata = BubbleableMetadata::createFromObject($cache_metadata);
+      $response->headers->set('Content-Disposition', 'attachment; filename="' . \Drupal::token()->replace($filename, ['view' => $view], [], $bubbleable_metadata) . '"');
+    }
     $response->headers->set('Content-type', $build['#content_type']);
 
     return $response;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function render() {
-
-    // Add the content disposition header if a custom filename has been used.
-    if (($response = $this->view->getResponse()) && $this->getOption('filename')) {
-      $response->headers->set('Content-Disposition', 'attachment; filename="' . $this->generateFilename($this->getOption('filename')) . '"');
-    }
-
-    return parent::render();
-  }
-
-  /**
-   * Given a filename and a view, generate a filename.
-   *
-   * @param $filename_pattern
-   *   The filename, which may contain replacement tokens.
-   * @return string
-   *   The filename with any tokens replaced.
-   */
-  protected function generateFilename($filename_pattern) {
-    return $this->globalTokenReplace($filename_pattern);
   }
 
   /**
@@ -342,7 +322,7 @@ class DataExport extends RestExport {
         $form['filename'] = [
           '#type' => 'textfield',
           '#title' => $this->t('Filename'),
-          '#default_value' => $this->options['filename'],
+          '#default_value' => $this->getOption('filename'),
           '#description' => $this->t('The filename that will be suggested to the browser for downloading purposes. You may include replacement patterns from the list below.'),
         ];
 
@@ -420,263 +400,10 @@ class DataExport extends RestExport {
         $this->setOption($section, $form_state->getValue($section));
         break;
 
-      case 'export_method':
-        $this->setOption('export_method', $form_state->getValue('export_method'));
-        $batch_size = $form_state->getValue('export_batch_size');
-        $this->setOption('export_batch_size', $batch_size > 1 ? $batch_size : 1);
-        break;
-
-      case 'export_limit':
-        $limit = $form_state->getValue('export_limit');
-        $this->setOption('export_limit', $limit > 0 ? $limit : 0);
-
-        // Set the limit option on the pager as-well. This is used for the
-        // standard rendering.
-        $this->setOption('pager', [
-          'type' => 'some',
-          'options' => [
-            'items_per_page' => $limit,
-            'offset' => 0,
-          ],
-        ]);
-        break;
-
       case 'path':
         $this->setOption('filename', $form_state->getValue('filename'));
-        $this->setOption('automatic_download', $form_state->getValue('automatic_download'));
-        $this->setOption('redirect_path', $form_state->getValue('redirect_path'));
         break;
     }
-  }
-
-  /**
-   * Implements callback_batch_operation() - perform processing on each batch.
-   *
-   * Writes rendered data export View rows to an output file that will be
-   * returned by callback_batch_finished() (i.e. finishBatch) when we're done.
-   *
-   * @param string $view_id
-   *   ID of the view.
-   * @param string $display_id
-   *   ID of the view display.
-   * @param array $args
-   *   Views arguments.
-   * @param array $exposed_input
-   *   Exposed input.
-   * @param mixed $context
-   *   Batch context information.
-   */
-  public static function processBatch($view_id, $display_id, array $args, array $exposed_input, $total_rows, &$context) {
-    // Load the View we're working with and set its display ID so we get the
-    // content we expect.
-    $view = Views::getView($view_id);
-    $view->setDisplay($display_id);
-    $view->setArguments($args);
-    $view->setExposedInput($exposed_input);
-
-    if (isset($context['sandbox']['progress'])) {
-      $view->setOffset($context['sandbox']['progress']);
-    }
-
-    $display_handler = $view->display_handler;
-    $export_limit = $display_handler->getOption('export_limit');
-
-    $view->preExecute($args);
-    // Build the View so the query parameters and offset get applied. so our
-    // This is necessary for the total to be calculated accurately and the call
-    // to $view->render() to return the items we expect to process in the
-    // current batch (i.e. not the same set of N, where N is the number of
-    // items per page, over and over).
-    $view->build();
-
-    // First time through - create an output file to write to, set our
-    // current item to zero and our total number of items we'll be processing.
-    if (empty($context['sandbox'])) {
-      // Initialize progress counter, which will keep track of how many items
-      // we've processed.
-      $context['sandbox']['progress'] = 0;
-
-      // Initialize file we'll write our output results to.
-      // This file will be written to with each batch iteration until all
-      // batches have been processed.
-      // This is a private file because some use cases will want to restrict
-      // access to the file. The View display's permissions will govern access
-      // to the file.
-      $current_user = \Drupal::currentUser();
-      $user_ID = $current_user->id();
-      $timestamp = \Drupal::time()->getRequestTime();
-      $filename = \Drupal::token()->replace($view->getDisplay()->options['filename'], array('view' => $view));
-      $extension = reset($view->getDisplay()->options['style']['options']['formats']);
-      $filename = $filename . "." . $extension;
-      $directory = "private://views_data_export/$user_ID-$timestamp/";
-      file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
-      $destination = $directory . $filename;
-      $file = file_save_data('', $destination, FILE_EXISTS_REPLACE);
-      if (!$file) {
-        // Failed to create the file, abort the batch.
-        unset($context['sandbox']);
-        $context['success'] = FALSE;
-        return;
-      }
-
-      $file->setTemporary();
-      $file->save();
-      // Create sandbox variable from filename that can be referenced
-      // throughout the batch processing.
-      $context['sandbox']['vde_file'] = $file->getFileUri();
-    }
-
-    // Render the current batch of rows - these will then be appended to the
-    // output file we write to each batch iteration.
-    // Make sure that if limit is set the last batch will output the remaining
-    // amount of rows and not more.
-    $items_this_batch = $display_handler->getOption('export_batch_size');
-    if ($export_limit && $context['sandbox']['progress'] + $items_this_batch > $export_limit) {
-      $items_this_batch = $export_limit - $context['sandbox']['progress'];
-    }
-
-    // Set the limit directly on the query.
-    $view->query->setLimit((int) $items_this_batch);
-    $rendered_rows = $view->render();
-    $string = (string) $rendered_rows['#markup'];
-
-    // Workaround for CSV headers, remove the first line.
-    if ($context['sandbox']['progress'] != 0 && reset($view->getStyle()->options['formats']) == 'csv') {
-      $string = preg_replace('/^[^\n]+/', '', $string);
-    }
-
-    // Workaround for XML
-    $output_format = reset($view->getStyle()->options['formats']);
-    if ($output_format == 'xml') {
-      $maximum = $export_limit ? $export_limit : $total_rows;
-      // Remove xml declaration and response opening tag.
-      if ($context['sandbox']['progress'] != 0) {
-        $string = str_replace('<?xml version="1.0"?>', '', $string);
-        $string = str_replace('<response>', '', $string);
-      }
-      // Remove response closing tag.
-      if ($context['sandbox']['progress'] + $items_this_batch < $maximum) {
-        $string = str_replace('</response>', '', $string);
-      }
-    }
-
-    // Workaround for XLS/XLSX
-    if ($context['sandbox']['progress'] != 0 && ($output_format == 'xls' || $output_format == 'xlsx')) {
-      $vdeFileRealPath = \Drupal::service('file_system')->realpath($context['sandbox']['vde_file']);
-      $previousExcel = \PHPExcel_IOFactory::load($vdeFileRealPath);
-      file_put_contents($vdeFileRealPath, $string);
-      $currentExcel = \PHPExcel_IOFactory::load($vdeFileRealPath);
-
-      // Append all rows to previous created excel.
-      $rowIndex = $previousExcel->getActiveSheet()->getHighestRow();
-      foreach ($currentExcel->getActiveSheet()->getRowIterator() as $row) {
-        if ($row->getRowIndex() == 1) {
-          // Skip header.
-          continue;
-        }
-        $rowIndex++;
-        $colIndex = 0;
-        foreach ($row->getCellIterator() as $cell) {
-          $previousExcel->getActiveSheet()->setCellValueByColumnAndRow(++$colIndex, $rowIndex, $cell->getValue());
-        }
-      }
-
-      $objWriter = new \PHPExcel_Writer_Excel2007($previousExcel);
-      $objWriter->save($vdeFileRealPath);
-    }
-    // Write rendered rows to output file.
-    elseif (file_put_contents($context['sandbox']['vde_file'], $string, FILE_APPEND) === FALSE) {
-      // Write to output file failed - log in logger and in ResponseText on
-      // batch execution page user will end up on if write to file fails.
-      $message = t('Could not write to temporary output file for result export (@file). Check permissions.', ['@file' => $context['sandbox']['vde_file']]);
-      \Drupal::logger('views_data_export')->error($message);
-      throw new ServiceUnavailableHttpException(NULL, $message);
-    }
-
-    // Update the progress of our batch export operation (i.e. number of
-    // items we've processed). Note can exceed the number of total rows we're
-    // processing, but that's considered in the if/else to determine when we're
-    // finished below.
-    $context['sandbox']['progress'] += $items_this_batch;
-
-    // If our progress is less than the total number of items we expect to
-    // process, we updated the "finished" variable to show the user how much
-    // progress we've made via the progress bar.
-    if ($context['sandbox']['progress'] < $total_rows) {
-      $context['finished'] = $context['sandbox']['progress'] / $total_rows;
-    }
-    else {
-      // We're finished processing, set progress bar to 100%.
-      $context['finished'] = 1;
-      // Store URI of export file in results array because it can be accessed
-      // in our callback_batch_finished (finishBatch) callback. Better to do
-      // this than use a SESSION variable. Also, we're not returning any
-      // results so the $context['results'] array is unused.
-      $context['results'] = [
-        'vde_file' => $context['sandbox']['vde_file'],
-        'automatic_download' => $view->display_handler->options['automatic_download'],
-      ];
-    }
-  }
-
-  /**
-   * Implements callback for batch finish.
-   *
-   * @param bool $success
-   *    Indicates whether we hit a fatal PHP error.
-   * @param array $results
-   *    Contains batch results.
-   * @param array $operations
-   *    If $success is FALSE, contains the operations that remained unprocessed.
-   *
-   * @return RedirectResponse
-   *    Where to redirect when batching ended.
-   */
-  public static function finishBatch($success, array $results, array $operations) {
-
-    // Set Drupal status message to let the user know the results of the export.
-    // The 'success' parameter means no fatal PHP errors were detected.
-    // All other error management should be handled using 'results'.
-    if ($success && isset($results['vde_file']) && file_exists($results['vde_file'])) {
-      // Check the permissions of the file to grant access and allow
-      // modules to hook into permissions via hook_file_download().
-      $headers = \Drupal::moduleHandler()->invokeAll('file_download', [$results['vde_file']]);
-      // Require at least one module granting access and none denying access.
-      if (!empty($headers) && !in_array(-1, $headers)) {
-
-        // Create a web server accessible URL for the private file.
-        // Permissions for accessing this URL will be inherited from the View
-        // display's configuration.
-        $url = file_create_url($results['vde_file']);
-
-        // If the user specified instant download than redirect to the file.
-        if ($results['automatic_download']) {
-          $response = new RedirectResponse($url);
-          $response->send();
-        }
-
-        drupal_set_message(t('Export complete. Download the file <a href=":download_url">here</a>.', [':download_url' => $url]));
-      }
-    }
-    else {
-      drupal_set_message(t('Export failed. Make sure the private file system is configured and check the error log.'), 'error');
-    }
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  protected function getRoute($view_id, $display_id) {
-    $route = parent::getRoute($view_id, $display_id);
-    $view = Views::getView($view_id);
-    $view->setDisplay($display_id);
-
-    // If this display is going to perform a redirect to the batch url
-    // make sure thr redirect response is never cached.
-    if ($view->display_handler->getOption('export_method') == 'batch') {
-      $route->setOption('no_cache', TRUE);
-    }
-    return $route;
   }
 
   /**
