@@ -2,9 +2,11 @@
 
   "use strict";
 
-  drupalSettings.omega.currentBreakpoints = {
-    'All' : true
-  };
+  if (drupalSettings.omega) {
+    drupalSettings.omega.currentBreakpoints = {
+      'All' : true
+    };
+  }
   
   
   

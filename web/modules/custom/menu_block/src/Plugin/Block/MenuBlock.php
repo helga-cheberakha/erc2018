@@ -54,6 +54,13 @@ class MenuBlock extends SystemMenuBlock {
       '#description' => $this->t('Alter the options in “Menu levels” to be relative to the fixed parent item. The block will only contain children of the selected menu link.'),
     ];
 
+    $form['advanced']['follow'] = [
+      '#type' => 'checkbox',
+      '#title' => "<strong>" . $this->t('Follow active trail') . "</strong>",
+      '#default_value' => $config['follow'],
+      '#description' => $this->t('Follow current active trail.'),
+    ];
+
     $form['style'] = [
       '#type' => 'details',
       '#title' => $this->t('HTML and style options'),
@@ -103,6 +110,7 @@ class MenuBlock extends SystemMenuBlock {
     $this->configuration['depth'] = $form_state->getValue('depth');
     $this->configuration['expand'] = $form_state->getValue('expand');
     $this->configuration['parent'] = $form_state->getValue('parent');
+    $this->configuration['follow'] = $form_state->getValue('follow');
     $this->configuration['suggestion'] = $form_state->getValue('suggestion');
   }
 
@@ -118,15 +126,28 @@ class MenuBlock extends SystemMenuBlock {
     $depth = $this->configuration['depth'];
     $expand = $this->configuration['expand'];
     $parent = $this->configuration['parent'];
-    $suggestion = $this->configuration['suggestion'];
+    $follow = $this->configuration['follow'];
 
+    $max_depth = $level + $depth - 1;
     $parameters->setMinDepth($level);
+
+    if ($follow) {
+      $level += count($parameters->activeTrail) - 1;
+      end($parameters->activeTrail);
+      $root_item = current($parameters->activeTrail);
+      if (empty($root_item) && count($parameters->activeTrail) > 1) {
+        $root_item = prev($parameters->activeTrail);
+        $level--;
+      }
+      $parameters->setRoot($root_item);
+    }
+
     // When the depth is configured to zero, there is no depth limit. When depth
     // is non-zero, it indicates the number of levels that must be displayed.
     // Hence this is a relative depth that we must convert to an actual
     // (absolute) depth, that may never exceed the maximum depth.
-    if ($depth > 0) {
-      $parameters->setMaxDepth(min($level + $depth - 1, $this->menuTree->maxDepth()));
+    if ($max_depth > 0) {
+      $parameters->setMaxDepth(min($max_depth, $this->menuTree->maxDepth()));
     }
 
     // For menu blocks with start level greater than 1, only show menu items
@@ -212,6 +233,7 @@ class MenuBlock extends SystemMenuBlock {
       'depth' => 0,
       'expand' => 0,
       'parent' => $this->getDerivativeId() . ':',
+      'follow' => 0,
       'suggestion' => strtr($this->getDerivativeId(), '-', '_'),
     ];
   }

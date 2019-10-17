@@ -84,6 +84,9 @@ class Flickr extends MediaTypeBase {
 
     // Image Regex.
     '@(?P<shortcode>(.*)(\s+)href=\"https://www.flickr.com/photos/(?<username>[^\s]+)/(?<imageid>[0-9]+)/(.*)\"(\s+)title=\"(?P<title>[\s\S]*)\"><img src=\"(?P<thumbnail>[^\s]+)\" width=\"(?P<width>[0-9]+)\" height=\"(?P<height>[0-9]+)\" alt=\"(.*)\"></a>(.*))@i' => 'shortcode',
+
+    // Use Guest Pass link.
+    '@(?P<shortcode>(.*)(\s+)href=\"https://www.flickr.com/gp/(?<username>[^\s]+)/(.*)\"(\s+)title=\"(?P<title>[\s\S]*)\"><img src=\"(?P<thumbnail>[^\s]+)\" width=\"(?P<width>[0-9]+)\" height=\"(?P<height>[0-9]+)\" alt=\"(.*)\"></a>(.*))@i' => 'shortcode',
   );
 
   /**

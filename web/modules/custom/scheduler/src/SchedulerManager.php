@@ -128,6 +128,13 @@ class SchedulerManager {
         // The object returned by getTranslation() behaves the same as a $node.
         $node = $node_multilingual->getTranslation($language->getId());
 
+        // Always use latest revision of the node.
+        if (!$node->isLatestRevision()) {
+          $revision_ids = \Drupal::entityTypeManager()->getStorage('node')->revisionIds($node);
+          $last_revision_id = end($revision_ids);
+          $node = \Drupal::entityTypeManager()->getStorage('node')->loadRevision($last_revision_id);
+        }
+
         // If the current translation does not have a publish on value, or it is
         // later than the date we are processing then move on to the next.
         $publish_on = $node->publish_on->value;

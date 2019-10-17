@@ -218,7 +218,8 @@ class Excel2007 {
                                     $nonEmpty = false;
                                 }
 
-                                if ($columnLetter > $info['lastColumnLetter']) {
+                                if (strlen($columnLetter) > strlen($info['lastColumnLetter'])
+                                    || (strlen($columnLetter) == strlen($info['lastColumnLetter']) && $columnLetter > $info['lastColumnLetter'])) {
                                     $info['lastColumnLetter'] = $columnLetter;
                                 }
                             }

@@ -76,7 +76,9 @@ class ContentModerationNotificationsListBuilder extends ConfigEntityListBuilder 
       $transitions = array_keys(array_filter($entity->transitions));
     }
     foreach ($transitions as $transition) {
-      $transition_strings[] = $workflow_transitions[$transition]->label();
+      if (isset($workflow_transitions[$transition])) {
+        $transition_strings[] = $workflow_transitions[$transition]->label();
+      }
     }
 
     $row['workflow'] = $workflow->label();
