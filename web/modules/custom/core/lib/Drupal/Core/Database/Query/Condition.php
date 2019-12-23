@@ -121,7 +121,6 @@ class Condition implements ConditionInterface, \Countable {
     $this->conditions[] = [
       'field' => $snippet,
       'value' => $args,
-      'operator' => NULL,
     ];
     $this->changed = TRUE;
 

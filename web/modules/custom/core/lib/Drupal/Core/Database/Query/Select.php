@@ -820,7 +820,7 @@ class Select extends Query implements SelectInterface {
     foreach ($this->fields as $field) {
       // Always use the AS keyword for field aliases, as some
       // databases require it (e.g., PostgreSQL).
-      $fields[] = (isset($field['table']) ? $this->connection->escapeTable($field['table']) . '.' : '') . $this->connection->escapeField($field['field']) . ' AS ' . $this->connection->escapeAlias($field['alias']);
+      $fields[] = $this->connection->escapeField((isset($field['table']) ? $field['table'] . '.' : '') . $field['field']) . ' AS ' . $this->connection->escapeAlias($field['alias']);
     }
     foreach ($this->expressions as $expression) {
       $fields[] = $expression['expression'] . ' AS ' . $this->connection->escapeAlias($expression['alias']);
@@ -852,7 +852,7 @@ class Select extends Query implements SelectInterface {
 
       // Don't use the AS keyword for table aliases, as some
       // databases don't support it (e.g., Oracle).
-      $query .= $table_string . ' ' . $this->connection->escapeTable($table['alias']);
+      $query .= $table_string . ' ' . $this->connection->escapeAlias($table['alias']);
 
       if (!empty($table['condition'])) {
         $query .= ' ON ' . (string) $table['condition'];

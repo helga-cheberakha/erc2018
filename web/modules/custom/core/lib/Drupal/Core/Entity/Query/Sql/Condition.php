@@ -50,6 +50,13 @@ class Condition extends ConditionBase {
       else {
         $type = $this->nestedInsideOrCondition || strtoupper($this->conjunction) === 'OR' || $condition['operator'] === 'IS NULL' ? 'LEFT' : 'INNER';
         $field = $tables->addField($condition['field'], $type, $condition['langcode']);
+        if ($field === 0) {
+          // Only add a condition if necessary.
+          if ($condition['value'] != 0) {
+            $conditionContainer->alwaysFalse();
+          }
+          continue;
+        }
         $condition['real_field'] = $field;
         static::translateCondition($condition, $sql_query, $tables->isFieldCaseSensitive($condition['field']));
 
