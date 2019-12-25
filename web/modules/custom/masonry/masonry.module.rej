@@ -1,0 +1,17 @@
+***************
+*** 15,21 ****
+      'vendor url' => 'http://masonry.desandro.com/',
+      'download url' => 'http://masonry.desandro.com/',
+      'version arguments' => array(
+-       'file' => 'masonry.pkgd.min.js',
+       // Masonry 3.x
+       'pattern' => '/Masonry\s+PACKAGED\s+v?([0-9\.]+)/',
+       'lines' => 2,
+--- 15,21 ----
+      'vendor url' => 'http://masonry.desandro.com/',
+      'download url' => 'http://masonry.desandro.com/',
+      'version arguments' => array(
++       'file' => 'dist/masonry.pkgd.min.js',
+       // Masonry 3.x
+       'pattern' => '/Masonry\s+PACKAGED\s+v?([0-9\.]+)/',
+       'lines' => 2,
